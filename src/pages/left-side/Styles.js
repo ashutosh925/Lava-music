@@ -79,7 +79,7 @@ export const useStyles = makeStyles((theme, props) => ({
 	},
 	playlistTitles: {
 		'& h5': {
-			fontSize: '14px',
+			fontSize: '12px',
 			margin: '8px 3px !important'
 		}
 	}

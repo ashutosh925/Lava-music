@@ -13,3 +13,21 @@ body > * {
 	background-image: linear-gradient(315deg, #000000cb 0%, #270627 74%);
 	z-index: -99 !important;
 }
+::-webkit-scrollbar {
+	width: 8px;
+	height: 6px;
+}
+::-webkit-scrollbar-track {
+	/* border-radius: 10px; */
+	background: rgba(5, 1, 1, 0.815);
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: rgb(75, 5, 5);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, 0.4);
+}
+::-webkit-scrollbar-thumb:active {
+	background: rgba(0, 0, 0, .9);
+}

@@ -52,8 +52,4 @@ const PlayList = () => {
 		</div>
 	);
 };
-export default PlayList;
-// arrowUpIcon: <ArrowUpwardIcon fontSize="small" event={() => console.log('up')} />,
-// 		playBtn: <PlayCircleOutlineIcon fontSize="small" event={() => console.log('play')} />,
-// 		removeBtn: <RemoveIcon fontSize="small" event={() => console.log('remove')} />,
-// 		arrowDown: <ArrowDownwardIcon fontSize="small" event={() => console.log('down')} />
+export default React.memo(PlayList);

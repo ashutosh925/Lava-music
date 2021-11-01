@@ -34,4 +34,4 @@ const EditPlaylist = () => {
 		</div>
 	);
 };
-export default EditPlaylist;
+export default React.memo(EditPlaylist);

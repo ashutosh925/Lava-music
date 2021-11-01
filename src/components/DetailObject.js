@@ -14,7 +14,6 @@ const DetailObject = (props) => {
 		if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + 'B';
 		if (n >= 1e12) return +(n / 1e12).toFixed(1) + 'T';
 	};
-
 	return (
 		<div className={classes.objectParent}>
 			<div className="mt-2 mb">

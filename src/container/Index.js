@@ -15,7 +15,7 @@ const Container = () => {
 					<Grid item lg={4}>
 						<LeftSide />
 					</Grid>
-					<Grid item lg={5} style={{ background: 'green' }}>
+					<Grid item lg={5}>
 						<MidContent />
 					</Grid>
 					<Grid item lg={3} style={{ background: 'orange' }}>
