@@ -14,7 +14,7 @@ import PlayerButtons from '../../components/PlayerButtons';
 const PlayList = () => {
 	const classes = useStyles();
 	const buttonProps = {
-		fontSize: '12px',
+		fontSize: '13px',
 		padding: '3px 8px',
 		margin: '0px 4px'
 	};
@@ -33,21 +33,27 @@ const PlayList = () => {
 					})}
 			</div>
 			<div className="d-flex w-100 mt-4 justify-content-evenly">
-				<PlayerButtons
-					text="Share Playlist"
-					icon={<ShareIcon fontSize="small" onClick={() => console.log('Share')} />}
-					{...buttonProps}
-				/>
-				<PlayerButtons
-					text="Delete Playlist"
-					icon={<DeleteIcon fontSize="small" onClick={() => console.log('delete playlist')} />}
-					{...buttonProps}
-				/>
-				<PlayerButtons
-					text="Save Playlist"
-					icon={<SaveAltIcon fontSize="small" onClick={() => console.log('Save Playlist')} />}
-					{...buttonProps}
-				/>
+				<button className={classes.buttonStyleRemove}>
+					<PlayerButtons
+						text="Share Playlist"
+						icon={<ShareIcon fontSize="small" onClick={() => console.log('Share')} />}
+						{...buttonProps}
+					/>
+				</button>
+				<button className={classes.buttonStyleRemove}>
+					<PlayerButtons
+						text="Delete Playlist"
+						icon={<DeleteIcon fontSize="small" onClick={() => console.log('delete playlist')} />}
+						{...buttonProps}
+					/>
+				</button>
+				<button className={classes.buttonStyleRemove}>
+					<PlayerButtons
+						text="Save Playlist"
+						icon={<SaveAltIcon fontSize="small" onClick={() => console.log('Save Playlist')} />}
+						{...buttonProps}
+					/>
+				</button>
 			</div>
 		</div>
 	);

@@ -17,27 +17,25 @@ const DetailObject = (props) => {
 	return (
 		<div className={classes.objectParent}>
 			<div className="mt-2 mb">
-				<Grid container>
-					<Grid item lg={5}>
+				<Grid container justifyContent="center">
+					<Grid item xs={7} sm={3} md={5} lg={5}>
 						<div>
 							<img src={thumbnail} alt="thumbnail" className={classes.videoThumbnail} />
 						</div>
 					</Grid>
-					<Grid item lg={6}>
-						<div className="ms-1">
+					<Grid item xs={7} sm={6} md={5} lg={5}>
+						<div className={classes.videoTitles}>
 							<h1 className={classes.mainTitle}>
 								Java OOPs Concepts in just 60 minutes | Object Oriented Programming | Java Tutorial For
 								Beginners
 							</h1>
-
 							<h1 className={classes.views}>Views: {formatViews(1500)} </h1>
-
 							<h1>Category:</h1>
 							<h1>Playtime:</h1>
 						</div>
 					</Grid>
-					<Grid item lg={1}>
-						<div className="ms-1">
+					<Grid item xs={2} sm={1} md={1} lg={2}>
+						<div className="ms-1 d-flex flex-column">
 							<button className={classes.arrowBtn} onClick={props.event}>
 								{props.arrowUpIcon}
 							</button>

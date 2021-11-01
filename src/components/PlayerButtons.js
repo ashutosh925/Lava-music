@@ -7,12 +7,10 @@ const EditListButtons = (props) => {
 	const classes = useStyles(props);
 
 	return (
-		<div>
-			<div className="d-flex justify-content-evenly align-items-center mb-4">
-				<div className="d-flex ">
-					<button className={classes.addPlaylistButton}>{props.icon}</button>
-					<h5 className={classes.newPlayList}>{props.text}</h5>
-				</div>
+		<div className={classes.actionBtns}>
+			<div className="d-flex align-items-center mt-1 mb-1">
+				{props.icon}
+				<h5 className={classes.BtnText}>{props.text}</h5>
 			</div>
 		</div>
 	);

@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { Button } from '@material-ui/core/';
+
 // files import
 import { ReactComponent as Tvlogo } from '../../assets/svg/tvsvg.svg';
 import { useStyles } from './Styles';
@@ -17,28 +17,30 @@ const Topbar = () => {
 	return (
 		<div className={classes.root}>
 			<AppBar position="static" color="transparent" className={classes.appbarParent}>
-				<Grid container justifyContent="space-between">
+				<Grid container>
 					<Grid item xs={12} sm={4} md={4} lg={4}>
 						<div className="d-flex h-100 justify-content-center align-items-center">
 							<a href="asdasd" onClick={(e) => e.preventDefault()}>
-								<Tvlogo width="30px" height="30px" />
+								<Tvlogo className={classes.tvLogo} />
 							</a>
 						</div>
 					</Grid>
-					<Grid item xs={12} sm={4} md={4} lg={4}>
-						<div className="d-flex h-100 justify-content-center align-items-center mt-sm-n3 ">
+					<Grid item xs={6} sm={3} md={4} lg={4}>
+						<div className="d-flex h-100 justify-content-center align-items-center mt-n2 ">
 							<h3 className={classes.logo}>LOGO</h3>
 						</div>
 					</Grid>
-					<Grid item xs={12} sm={4} md={4} lg={4}>
-						<div className="d-flex justify-content-end  h-100 align-items-center">
-							<div className="d-flex h-100  align-items-center">
-								<h5 className={classes.userName}>username</h5>
+					<Grid item xs={6} sm={4} md={4} lg={4}>
+						<div className="d-flex justify-content-end align-items-center">
+							<div className="d-flex h-100 align-items-center">
+								<h5 className={classes.userName}>Username</h5>
 								<Avatar alt="user image" src={user1} className={classes.userImage} />
-
-								<Button disableRipple style={{ color: '#d1d1d1' }} onClick={logout}>
+								<button
+									style={{ color: '#d1d1d1', border: 'none', background: 'none' }}
+									onClick={logout}
+								>
 									<ExitToAppIcon fontSize="medium" />
-								</Button>
+								</button>
 							</div>
 						</div>
 					</Grid>

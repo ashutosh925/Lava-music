@@ -3,36 +3,28 @@ import { useStyles } from './Styles';
 
 const PlaylistOne = (props) => {
 	const classes = useStyles();
-	const imageStyles = {
-		width: '75px',
-		height: '72px',
-		margin: '1px'
-	};
+
 	return (
 		<div>
-			<div className="d-flex w-100">
+			<div className="d-flex w-100 mt-2 mb-2">
 				<div className="d-flex flex-column justify-content-center me-2">
-					{props.playBtn}
+					<button className={classes.addPlaylistButton}>{props.shareBtn}</button>
 					<br />
-					{props.shareBtn}
+					<button className={classes.addPlaylistButton}>{props.playBtn}</button>
 				</div>
-				<div className="d-flex flex-wrap " style={{ width: '40%' }}>
+				<div className={`d-flex justify-content-center flex-wrap ${classes.imagesParent}`}>
 					{props.images &&
-						props.images.map((images, idx) => {
-							return (
-								<div key={idx}>
-									<img src={images} alt="first-img" style={{ ...imageStyles }} key={idx} />
-								</div>
-							);
+						props.images.map((imgList, idx) => {
+							return <img src={imgList} alt="first-img" key={idx} className={classes.singleVideoImgs} />;
 						})}
 				</div>
 				<div className={classes.playlistTitles}>
-					<h5>PlayList: {props.playlist}</h5>
-					<h5>User: {props.user}</h5>
-					<h5>Channel:{props.channel}</h5>
-					<h5>Category:{props.category}</h5>
-					<h5>Total Runtime:{props.totalRuntime}</h5>
-					<h5>Plays: {props.plays}</h5>
+					<h5>PlayList: {props.Playlist}</h5>
+					<h5>User: {props.User}</h5>
+					<h5>Channel: {props.Channel}</h5>
+					<h5>Category: {props.Category}</h5>
+					<h5>Total Runtime: {props.TotalRuntime}</h5>
+					<h5>Plays: {props.Plays}</h5>
 				</div>
 			</div>
 		</div>

@@ -9,17 +9,23 @@ export const useStyles = makeStyles((theme, props) => ({
 		fontSize: '17px',
 		margin: '10px 0px 10px 10px'
 	},
-
+	buttonStyleRemove: {
+		background: 'transparent',
+		border: 'none',
+		lineHeight: '16px !important',
+		color: '#e4e3e3'
+	},
 	//playlist component
 	PlayListRoot: {
-		margin: '0px auto'
+		margin: '0px auto',
+		background: '#00000040'
 	},
 	player: {
 		height: '350px',
 		padding: '2px',
 		overflowY: 'auto !important',
 		'&::-webkit-scrollbar': {
-			width: '8px',
+			width: '6px',
 			height: ' 6px'
 		},
 		'&::-webkit-scrollbar-track': {
@@ -40,21 +46,27 @@ export const useStyles = makeStyles((theme, props) => ({
 	// all playlist
 
 	AllPlayListParent: {
-		padding: '5px'
+		padding: '5px',
+		background: '#00000040',
+		height: '300px',
+		margin: '30px 0px'
 	},
+
 	// all playlist
 	allPlaylistHeading: {
 		fontSize: '20px',
 		color: '#FFFFFF',
 		textAlign: 'center',
-		letterSpacing: '2px'
+		letterSpacing: '2px',
+		margin: '45px 20px 20px 20px'
 	},
-	playListFirstSection: {
-		height: '360px',
+	playListSection: {
+		padding: '3px',
 		margin: '10px 0px',
+		height: '250px',
 		overflowY: 'auto !important',
 		'&::-webkit-scrollbar': {
-			width: '8px',
+			width: '6px',
 			height: ' 6px'
 		},
 		'&::-webkit-scrollbar-track': {
@@ -70,17 +82,6 @@ export const useStyles = makeStyles((theme, props) => ({
 		},
 		'&::-webkit-scrollbar-thumb:active': {
 			background: 'rgba(0, 0, 0, .9)'
-		}
-	},
-
-	playlist: {
-		margin: '10px 0px',
-		padding: '2px'
-	},
-	playlistTitles: {
-		'& h5': {
-			fontSize: '12px',
-			margin: '8px 3px !important'
 		}
 	}
 }));

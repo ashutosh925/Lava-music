@@ -8,14 +8,33 @@ export const useStyles = makeStyles((theme, props) => ({
 		padding: '10px 10px !important'
 	},
 	userName: {
-		color: '#d1d1d1'
+		color: '#d1d1d1',
+		[theme.breakpoints.down('500')]: {
+			fontSize: '13px'
+		}
 	},
 	userImage: {
 		width: '30px',
 		height: '30px',
-		margin: '0px 10px !important'
+		margin: '0px 15px !important',
+		[theme.breakpoints.down('500')]: {
+			width: '25px',
+			height: '25px',
+			margin: '0px 5px !important'
+		}
 	},
 	logo: {
-		color: '#d1d1d1'
+		color: '#d1d1d1',
+		[theme.breakpoints.down('500')]: {
+			fontSize: '15px'
+		}
+	},
+	tvLogo: {
+		width: '30px',
+		height: '30px',
+		[theme.breakpoints.down('500')]: {
+			width: '25px',
+			height: '25px'
+		}
 	}
 }));
