@@ -33,21 +33,21 @@ const PlayList = () => {
 					})}
 			</div>
 			<div className="d-flex w-100 mt-4 justify-content-evenly">
-				<button className={classes.buttonStyleRemove}>
+				<button className={classes.buttonStyleRemove} onClick={() => console.log('Share Playlist ')}>
 					<PlayerButtons
 						text="Share Playlist"
 						icon={<ShareIcon fontSize="small" onClick={() => console.log('Share')} />}
 						{...buttonProps}
 					/>
 				</button>
-				<button className={classes.buttonStyleRemove}>
+				<button className={classes.buttonStyleRemove} onClick={() => console.log('Delete Playlist ')}>
 					<PlayerButtons
 						text="Delete Playlist"
 						icon={<DeleteIcon fontSize="small" onClick={() => console.log('delete playlist')} />}
 						{...buttonProps}
 					/>
 				</button>
-				<button className={classes.buttonStyleRemove}>
+				<button className={classes.buttonStyleRemove} onClick={() => console.log('Share Playlist ')}>
 					<PlayerButtons
 						text="Save Playlist"
 						icon={<SaveAltIcon fontSize="small" onClick={() => console.log('Save Playlist')} />}

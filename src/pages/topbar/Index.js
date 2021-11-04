@@ -4,14 +4,22 @@ import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+// hooks
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // files import
 import { ReactComponent as Tvlogo } from '../../assets/svg/tvsvg.svg';
 import { useStyles } from './Styles';
 import user1 from '../../assets/user1.jpg';
+
 const Topbar = () => {
+	const dispatch = useDispatch();
 	const classes = useStyles();
+	const history = useHistory();
 	const logout = () => {
+		dispatch({ type: 'LOG OUT' });
+		history.push('/');
 		console.log('user logged out');
 	};
 	return (

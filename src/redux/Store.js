@@ -15,36 +15,31 @@ export default store;
 
 //  //////
 
-// import { applyMiddleware, createStore, combineReducers } from "redux";
-// import { persistStore, persistReducer } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
-// import thunk from "redux-thunk";
-// import { composeWithDevTools } from "redux-devtools-extension";
-// import rootReducer from "../redux/reducers/Index";
+// import { applyMiddleware, createStore, combineReducers } from 'redux';
+// import { persistStore, persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
+// import thunk from 'redux-thunk';
+// import { composeWithDevTools } from 'redux-devtools-extension';
+// import rootReducer from '../redux/reducers/Index';
 
-// const middleWare = [thunk];
+// const middleWare = [ thunk ];
 
 // const reducer = persistReducer(
-//   {
-//     key: "auth", // key is required
-//     storage, // storage is now required
-
-//     whitelist: ["Auth"],
-//   },
-//   combineReducers({ ...rootReducer })
+// 	{
+// 		key: 'auth', // key is required
+// 		storage, // storage is now required
+// 		whitelist: [ 'Auth' ]
+// 	},
+// 	combineReducers({ ...rootReducer })
 // );
 
 // const configStore = (initialState = {}) => {
-//   const store = createStore(
-//     reducer,
-//     initialState,
-//     composeWithDevTools(applyMiddleware(...middleWare))
-//   );
+// 	const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleWare)));
 
-//   return {
-//     persistor: persistStore(store),
-//     store,
-//   };
+// 	return {
+// 		persistor: persistStore(store),
+// 		store
+// 	};
 // };
 
 // const { store, persistor } = configStore();

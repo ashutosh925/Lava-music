@@ -8,7 +8,7 @@ body > * {
 	color: #e4e3e3;
 }
 #root {
-	height: auto;
+	height: 100%;
 	background-color: #26267a;
 	background-image: linear-gradient(315deg, #000000cb 0%, #270627 74%);
 	z-index: -99 !important;
@@ -31,3 +31,5 @@ body > * {
 ::-webkit-scrollbar-thumb:active {
 	background: rgb(63, 63, 63);
 }
+
+/* sign in error */

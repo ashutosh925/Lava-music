@@ -47,6 +47,7 @@ export const useStyles = makeStyles((theme, props) => ({
 		lineHeight: '16px !important',
 		color: '#e4e3e3'
 	},
+
 	//player button
 
 	BtnText: (props) => ({
@@ -62,7 +63,8 @@ export const useStyles = makeStyles((theme, props) => ({
 	actionBtns: {
 		// margin: '10px 10px'
 	},
-	//single video object
+
+	//playlist  object
 
 	playlistTitles: {
 		'& h5': {
@@ -74,7 +76,7 @@ export const useStyles = makeStyles((theme, props) => ({
 		}
 	},
 
-	singleVideoImgs: {
+	playListImgs: {
 		width: '60px',
 		height: '65px',
 		margin: '1px',
@@ -87,6 +89,41 @@ export const useStyles = makeStyles((theme, props) => ({
 		width: '35%',
 		[theme.breakpoints.down('500')]: {
 			width: '37%'
+		}
+	},
+	//single video component
+	SingleVideoParnt: {
+		padding: '5px',
+		margin: '10px 0px'
+	},
+
+	singleVidContainer: {
+		// height: '100px',
+		width: '100%',
+		display: 'flex',
+		alignItems: 'center'
+	},
+	singleImgDiv: {
+		width: '20ppx',
+		height: '20ppx'
+	},
+	singleVidImgParent: {
+		width: '100%',
+
+		textAlign: 'center'
+	},
+	singleVidImg: {
+		height: '100px',
+		width: '100%'
+	},
+	singleViTitles: {
+		'& h5': {
+			fontSize: '12px',
+			margin: '7px 5px !important'
+		},
+		[theme.breakpoints.down('600')]: {
+			margin: 'auto  5px !important',
+			textAlign: 'center'
 		}
 	}
 }));

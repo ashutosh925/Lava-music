@@ -15,7 +15,7 @@ const PlaylistOne = (props) => {
 				<div className={`d-flex justify-content-center flex-wrap ${classes.imagesParent}`}>
 					{props.images &&
 						props.images.map((imgList, idx) => {
-							return <img src={imgList} alt="first-img" key={idx} className={classes.singleVideoImgs} />;
+							return <img src={imgList} alt="first-img" key={idx} className={classes.playListImgs} />;
 						})}
 				</div>
 				<div className={classes.playlistTitles}>

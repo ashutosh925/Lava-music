@@ -63,7 +63,7 @@ export const useStyles = makeStyles((theme, props) => ({
 	playListSection: {
 		padding: '3px',
 		margin: '10px 0px',
-		height: '250px',
+		height: '270px',
 		overflowY: 'auto !important',
 		'&::-webkit-scrollbar': {
 			width: '6px',

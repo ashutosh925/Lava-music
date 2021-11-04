@@ -1,18 +1,22 @@
 const initialState = {
+	isAuthenticated: localStorage.getItem('authlava') ? true : false,
 	id: 0
 };
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case 'increment':
+		case 'LOGIN':
+			console.log('usedisptach login');
+			localStorage.setItem('authlava', true);
 			return {
 				...state,
-				id: state.id + 1
+				isAuthenticated: true
 			};
-		case 'decrement':
+		case 'LOG OUT':
+			localStorage.removeItem('authlava');
 			return {
 				...state,
-				id: state.id - 1
+				isAuthenticated: false
 			};
 		default:
 			return state;

@@ -18,14 +18,14 @@ const EditPlaylist = () => {
 	return (
 		<div className={classes.root}>
 			<div className="d-flex justify-content-evenly">
-				<button className={classes.buttonStyleRemove}>
+				<button className={classes.buttonStyleRemove} onClick={() => console.log('new playlist ')}>
 					<EditListButtons
 						text="New Playlist"
 						icon={<Playlist width="23px" height="23px" fill="white" />}
 						{...buttonProps}
 					/>
 				</button>
-				<button className={classes.buttonStyleRemove}>
+				<button className={classes.buttonStyleRemove} onClick={() => console.log('paste code')}>
 					<EditListButtons
 						text="Paste Embedded code"
 						icon={<Pasteembedded width="23px" height="23px" fill="white" />}
