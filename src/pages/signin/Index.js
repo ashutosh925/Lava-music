@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom';
 
 //files import
 import { useStyles } from './Styles';
-import youtube from '../../redux/actions/YoutubeAction';
 const Login = () => {
 	let history = useHistory();
 	const classes = useStyles();
@@ -15,7 +14,7 @@ const Login = () => {
 
 	const { register, handleSubmit, formState: { errors } } = useForm();
 	const [ wrongInfo, setWrongInfo ] = useState(false);
-	const [ credentals, setstate ] = useState({
+	const [ credentals ] = useState({
 		email: 'fiverr@gmail.com',
 		password: '12345'
 	});
@@ -25,7 +24,7 @@ const Login = () => {
 			history.push('/lavamusic');
 		}
 		// dispatch(youtube());
-	}, []);
+	});
 	const onSubmit = (data) => {
 		if (credentals.email === data.Email && credentals.password === data.Password) {
 			dispatch({ type: 'LOGIN' });

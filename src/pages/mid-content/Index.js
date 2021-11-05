@@ -12,7 +12,6 @@ import ClearIcon from '@material-ui/icons/Clear';
 import { useSelector } from 'react-redux';
 //files import
 import { useStyles } from './Styles';
-import video1 from '../../assets/songs.mp4';
 import ActionButton from '../../components/PlayerButtons';
 import UserUpload from './UserUpload';
 import InputSearch from './InputSearch';
@@ -70,8 +69,7 @@ const MidContent = () => {
 		});
 		console.log('playing next..', nextVideo.count);
 	};
-	// const index = nextVideo.count;
-	// console.log(nextVideo.count, 'from outside');
+
 	console.log(onClickVideoPlay, 'frm player');
 	return (
 		<div className={classes.root}>

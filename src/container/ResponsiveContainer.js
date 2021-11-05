@@ -2,12 +2,9 @@ import React from 'react';
 
 //mateiral ui imports
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
-import Box from '@material-ui/core/Box';
+
 //files import
 
-import { useStyles } from './Styles';
-import Topbar from '../pages/topbar/Index';
 import LeftSide from '../pages/left-side/Index';
 import MidContent from '../pages/mid-content/Index';
 import RightSide from '../pages/right-content/Index';

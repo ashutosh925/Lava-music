@@ -1,7 +1,5 @@
 import API from '../../utitils/Api';
 const youtube = (termFromSearchBar) => async (dispatch, getState) => {
-	const token = 'AIzaSyAD-SuaapjRs-ri8ibgTUaHh34zSGVmplo';
-	const id = '1DpH-icPpl0';
 
 	console.log('from dispatch');
 	try {

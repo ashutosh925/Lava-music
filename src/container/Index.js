@@ -3,7 +3,7 @@ import React from 'react';
 //mateiral ui imports
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import Box from '@material-ui/core/Box';
+
 //files import
 
 import { useStyles } from './Styles';
