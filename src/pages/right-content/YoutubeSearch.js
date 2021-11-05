@@ -4,6 +4,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import AddIcon from '@material-ui/icons/Add';
 import { useSelector, useDispatch } from 'react-redux';
+import Tooltip from '@material-ui/core/Tooltip';
 //files import
 import { useStyles } from './Styles';
 import youtube from '../../redux/actions/YoutubeAction';
@@ -35,7 +36,9 @@ const YoutubeSearch = () => {
 			<div className={classes.inputParent}>
 				<div className="me-2">
 					<button className={classes.buttonStyleRemove} onClick={() => searchQuery()}>
-						<SearchIcon />
+						<Tooltip title="Search" placement="top">
+							<SearchIcon />
+						</Tooltip>
 					</button>
 				</div>
 				<input
@@ -53,9 +56,16 @@ const YoutubeSearch = () => {
 							<div key={idx}>
 								<SingleVideoObject
 									title={items.snippet.title}
-									img={items.snippet.thumbnails.high.url}
+									img={items.snippet.thumbnails.medium.url}
 									category={items.snippet.channelTitle}
-									icon1={<PlayCircleOutlineIcon onClick={() => playThisVid(items.id.videoId)} />}
+									icon1={
+										<Tooltip title="Play" placement="top">
+											<PlayCircleOutlineIcon
+												onClick={() =>
+													playThisVid(`https://www.youtube.com/watch?v=${items.id.videoId}`)}
+											/>
+										</Tooltip>
+									}
 									icon2={<AddIcon />}
 								/>
 							</div>

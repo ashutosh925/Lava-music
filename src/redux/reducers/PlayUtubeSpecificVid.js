@@ -8,7 +8,7 @@ const reducer = (state = initialState, action) => {
 		case 'PLAY THIS':
 			return {
 				...state,
-				video: `https://www.youtube.com/watch?v=${action.payload}`
+				video: action.payload
 			};
 
 		default:
