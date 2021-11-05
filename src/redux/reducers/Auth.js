@@ -1,19 +1,18 @@
+import { LOG_IN, LOG_OUT } from '../../utitils/Types';
 const initialState = {
-	isAuthenticated: localStorage.getItem('authlava') ? true : false,
-	id: 0
+	isAuthenticated: false
 };
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case 'LOGIN':
+		case LOG_IN:
 			console.log('usedisptach login');
-			localStorage.setItem('authlava', true);
+
 			return {
 				...state,
 				isAuthenticated: true
 			};
-		case 'LOG OUT':
-			localStorage.removeItem('authlava');
+		case LOG_OUT:
 			return {
 				...state,
 				isAuthenticated: false

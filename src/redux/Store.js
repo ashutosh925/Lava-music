@@ -1,48 +1,35 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import rootreducers from './reducers/Index';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
-const initialState = {};
-
-const Middleware = [ thunk ];
-
-const reducers = combineReducers({
-	rootreducers
-});
-
-const store = createStore(reducers, initialState, composeWithDevTools(applyMiddleware(...Middleware)));
-export default store;
-
-//  //////
-
-// import { applyMiddleware, createStore, combineReducers } from 'redux';
-// import { persistStore, persistReducer } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+// import { createStore, combineReducers, applyMiddleware } from 'redux';
+// import rootreducers from './reducers/Index';
 // import thunk from 'redux-thunk';
 // import { composeWithDevTools } from 'redux-devtools-extension';
-// import rootReducer from '../redux/reducers/Index';
+// const initialState = {};
 
-// const middleWare = [ thunk ];
+// const Middleware = [ thunk ];
 
-// const reducer = persistReducer(
-// 	{
-// 		key: 'auth', // key is required
-// 		storage, // storage is now required
-// 		whitelist: [ 'Auth' ]
-// 	},
-// 	combineReducers({ ...rootReducer })
-// );
+// const reducers = combineReducers({
+// 	rootreducers
+// });
 
-// const configStore = (initialState = {}) => {
-// 	const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleWare)));
+// const store = createStore(reducers, initialState, composeWithDevTools(applyMiddleware(...Middleware)));
+// export default store;
 
-// 	return {
-// 		persistor: persistStore(store),
-// 		store
-// 	};
-// };
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import rootReducer from './reducers/Index';
+import thunk from 'redux-thunk';
 
-// const { store, persistor } = configStore();
+const middlewares = [ thunk ];
 
-// global.store = store;
-// export { store, persistor };
+const persistConfig = {
+	key: 'root',
+	storage: storage,
+	whitelist: [ 'auth', 'utube', 'oneVideo' ]
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+export const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(...middlewares)));
+export const persister = persistStore(store);
+
+//working redux persist

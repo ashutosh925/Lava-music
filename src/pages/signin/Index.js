@@ -6,11 +6,13 @@ import { useHistory } from 'react-router-dom';
 
 //files import
 import { useStyles } from './Styles';
+import youtube from '../../redux/reducers/actions/YoutubeAction';
 const Login = () => {
 	let history = useHistory();
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const isAuth = useSelector((state) => state.rootreducers.auth.isAuthenticated);
+	const isAuth = useSelector((state) => state.auth.isAuthenticated);
+
 	const { register, handleSubmit, formState: { errors } } = useForm();
 	const [ wrongInfo, setWrongInfo ] = useState(false);
 	const [ credentals, setstate ] = useState({
@@ -22,8 +24,8 @@ const Login = () => {
 		if (isAuth) {
 			history.push('/lavamusic');
 		}
+		// dispatch(youtube());
 	}, []);
-
 	const onSubmit = (data) => {
 		if (credentals.email === data.Email && credentals.password === data.Password) {
 			dispatch({ type: 'LOGIN' });
@@ -33,9 +35,8 @@ const Login = () => {
 		} else {
 			setWrongInfo(true);
 		}
-		console.log(data);
 	};
-	console.log(isAuth);
+	console.log(isAuth, 'sign in rendering');
 	return (
 		<div className={classes.root}>
 			<p>email :fiverr@gmail.com</p>

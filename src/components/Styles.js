@@ -103,27 +103,27 @@ export const useStyles = makeStyles((theme, props) => ({
 		display: 'flex',
 		alignItems: 'center'
 	},
-	singleImgDiv: {
-		width: '20ppx',
-		height: '20ppx'
-	},
+
 	singleVidImgParent: {
 		width: '100%',
-
 		textAlign: 'center'
 	},
 	singleVidImg: {
-		height: '100px',
 		width: '100%'
 	},
 	singleViTitles: {
 		'& h5': {
 			fontSize: '12px',
-			margin: '7px 5px !important'
+			margin: '2px 5px !important'
 		},
 		[theme.breakpoints.down('600')]: {
 			margin: 'auto  5px !important',
 			textAlign: 'center'
+		}
+	},
+	singleVideoIcons: {
+		'&:hover': {
+			cursor: 'pointer'
 		}
 	}
 }));

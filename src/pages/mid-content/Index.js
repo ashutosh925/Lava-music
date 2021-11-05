@@ -7,6 +7,9 @@ import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import TimerIcon from '@material-ui/icons/Timer';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import ClearIcon from '@material-ui/icons/Clear';
+
+//hooks import
+import { useSelector } from 'react-redux';
 //files import
 import { useStyles } from './Styles';
 import video1 from '../../assets/songs.mp4';
@@ -23,8 +26,15 @@ const buttonProps = {
 
 const MidContent = () => {
 	const [ inputFieldState, setinputFieldState ] = useState(false);
+	const [ nextVideo, setNextVideo ] = useState(
+		{ count: 0 },
+		{
+			videoref: ''
+		}
+	);
 	const classes = useStyles();
 
+	const onClickVideoPlay = useSelector((state) => state.oneVideo.video);
 	const actionBtns = [
 		{
 			text: 'Randomize Playlist',
@@ -53,10 +63,20 @@ const MidContent = () => {
 		setinputFieldState(true);
 		console.log('togling', inputFieldState);
 	};
+	const nextPlay = () => {
+		setNextVideo({
+			...nextVideo,
+			count: nextVideo.count + 1
+		});
+		console.log('playing next..', nextVideo.count);
+	};
+	// const index = nextVideo.count;
+	// console.log(nextVideo.count, 'from outside');
+	console.log(onClickVideoPlay, 'frm player');
 	return (
 		<div className={classes.root}>
-			<div className="border ">
-				<ReactPlayer url={video1} loop playing={false} controls width="90%" />
+			<div className="border m-auto ">
+				<ReactPlayer playing url={onClickVideoPlay} width="100%" controls onEnded={() => nextPlay()} />
 			</div>
 			<div className=" d-flex flex-wrap justify-content-evenly mt-2 p-2">
 				{actionBtns &&

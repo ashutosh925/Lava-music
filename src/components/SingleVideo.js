@@ -21,9 +21,9 @@ const SingleVideo = (props) => {
 				<Grid container justifyContent="center">
 					<Grid item xs={1} sm={1} md={1} lg={1}>
 						<div className="d-flex  h-100 me-2 flex-column justify-content-evenly ">
-							<div>{props.icon1}</div>
+							<div className={classes.singleVideoIcons}>{props.icon1}</div>
 
-							<div>{props.icon2}</div>
+							<div className={classes.singleVideoIcons}>{props.icon2}</div>
 						</div>
 					</Grid>
 					<Grid item xs={10} sm={5} md={4} lg={5}>
@@ -31,12 +31,11 @@ const SingleVideo = (props) => {
 							<img src={props.img} alt="videoimage" className={classes.singleVidImg} />
 						</div>
 					</Grid>
-					<Grid item xs={12} sm={5} md={6} lg={6}>
+					<Grid item xs={12} sm={6} md={6} lg={6}>
 						<div className={classes.singleViTitles}>
 							<h5>Title: {props.title}</h5>
 							<h5 className={classes.views}>Views: {formatViews(props.views)} </h5>
-							<h5>Category: {props.category}</h5>
-							<h5>Playtime: {props.playtime}</h5>
+							<h5>channelTitle: {props.category}</h5>
 						</div>
 					</Grid>
 				</Grid>

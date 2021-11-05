@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme, props) => ({
 	inputParent: {
 		display: 'flex',
 		width: '80%',
-		margin: 'auto'
+		margin: '10px auto'
 	},
 	inputSearch: {
 		height: '30px !important',
@@ -35,11 +35,17 @@ export const useStyles = makeStyles((theme, props) => ({
 	},
 	//youtube component
 	youtubeRoot: {
-		margin: '10px 0px'
+		height: '400px',
+		margin: '0px 0px 10px 0px',
+
+		overflowY: 'auto !important'
 	},
+
 	// vimeoRoot
 
 	vimeoRoot: {
+		border: '1px solid white',
+		height: '400px',
 		margin: '10px 0px'
 	}
 }));
