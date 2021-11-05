@@ -2,6 +2,8 @@ import React from 'react';
 
 //mateiral ui imports
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import Box from '@material-ui/core/Box';
 //files import
 
 import { useStyles } from './Styles';
@@ -16,17 +18,37 @@ const Container = () => {
 		<div>
 			<Topbar />
 			<div className={classes.root}>
-				<Grid container>
-					<Grid item lg={4}>
-						<LeftSide />
+				<Hidden only={[ 'xs', 'sm', 'md' ]}>
+					<Grid container>
+						<Grid item lg={4}>
+							<h1>root 2</h1>
+							<LeftSide />
+						</Grid>
+						<Grid item lg={5}>
+							<MidContent />
+						</Grid>
+						<Grid item lg={3}>
+							<RightSideParent />
+						</Grid>
 					</Grid>
-					<Grid item lg={5}>
-						<MidContent />
+				</Hidden>
+			</div>
+
+			<div className={classes.root2}>
+				<Hidden only={[ 'lg', 'xl' ]}>
+					<Grid container justifyContent="center">
+						<Grid item md={7}>
+							<MidContent />
+						</Grid>
+						<Grid item md={5}>
+							<RightSideParent />
+						</Grid>
+
+						<Grid item md={6}>
+							<LeftSide />
+						</Grid>
 					</Grid>
-					<Grid item lg={3}>
-						<RightSideParent />
-					</Grid>
-				</Grid>
+				</Hidden>
 			</div>
 		</div>
 	);

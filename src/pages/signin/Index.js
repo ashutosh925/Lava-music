@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 //files import
 import { useStyles } from './Styles';
-import youtube from '../../redux/reducers/actions/YoutubeAction';
+import youtube from '../../redux/actions/YoutubeAction';
 const Login = () => {
 	let history = useHistory();
 	const classes = useStyles();

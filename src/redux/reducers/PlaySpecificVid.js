@@ -1,5 +1,6 @@
 const initialState = {
-	video: ''
+	video: '',
+	serverResponsive: ''
 };
 
 const reducer = (state = initialState, action) => {

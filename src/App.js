@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from './container/Index';
+import Container from './container/Container';
 import ProtectedRoute from './utitils/ProtectedRoutes';
 import Login from './pages/signin/Index';
 import Signup from './pages/signup/Index';

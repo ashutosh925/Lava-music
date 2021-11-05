@@ -33,8 +33,8 @@ const MidContent = () => {
 		}
 	);
 	const classes = useStyles();
-
 	const onClickVideoPlay = useSelector((state) => state.oneVideo.video);
+
 	const actionBtns = [
 		{
 			text: 'Randomize Playlist',

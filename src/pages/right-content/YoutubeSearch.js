@@ -6,7 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { useSelector, useDispatch } from 'react-redux';
 //files import
 import { useStyles } from './Styles';
-import youtube from '../../redux/reducers/actions/YoutubeAction';
+import youtube from '../../redux/actions/YoutubeAction';
 import SingleVideoObject from '../../components/SingleVideo';
 const YoutubeSearch = () => {
 	const [ searchBar, setSearchBar ] = useState({ query: '' });

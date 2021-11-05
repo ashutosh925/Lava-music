@@ -17,7 +17,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import rootReducer from './reducers/Index';
+import rootReducer from './CombineReducers';
 import thunk from 'redux-thunk';
 
 const middlewares = [ thunk ];

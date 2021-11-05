@@ -1,4 +1,4 @@
-import API from '../../../utitils/Api';
+import API from '../../utitils/Api';
 const youtube = (termFromSearchBar) => async (dispatch, getState) => {
 	const token = 'AIzaSyAD-SuaapjRs-ri8ibgTUaHh34zSGVmplo';
 	const id = '1DpH-icPpl0';
@@ -12,7 +12,7 @@ const youtube = (termFromSearchBar) => async (dispatch, getState) => {
 			}
 		});
 
-		console.log(response.data.items);
+		console.log(response.data);
 		dispatch({ type: 'GET RES', payload: response?.data?.items });
 	} catch (e) {
 		console.log('error message', e);
