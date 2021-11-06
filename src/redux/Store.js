@@ -25,7 +25,7 @@ const middlewares = [ thunk ];
 const persistConfig = {
 	key: 'root',
 	storage: storage,
-	whitelist: [ 'auth', 'utube', 'oneVideo' ]
+	whitelist: [ 'auth', 'utube' ]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -10,8 +10,9 @@ const youtube = (termFromSearchBar) => async (dispatch, getState) => {
 			}
 		});
 
-		console.log(response.data);
-		dispatch({ type: 'GET RES', payload: response?.data?.items });
+		console.log(response.data.items);
+		dispatch({ type: 'GET_RESULT', payload: response?.data?.items });
+		return response.data
 	} catch (e) {
 		console.log('error message', e);
 	}

@@ -32,7 +32,7 @@ const MidContent = () => {
 		}
 	);
 	const classes = useStyles();
-	const onClickVideoPlay = useSelector((state) => state.oneVideo.video);
+	const youtubeVIdeo = useSelector((state) => state.utube?.utubeVideoPlay);
 
 	const actionBtns = [
 		{
@@ -62,19 +62,12 @@ const MidContent = () => {
 		setinputFieldState(true);
 		console.log('togling', inputFieldState);
 	};
-	const nextPlay = () => {
-		setNextVideo({
-			...nextVideo,
-			count: nextVideo.count + 1
-		});
-		console.log('playing next..', nextVideo.count);
-	};
 
-	console.log(onClickVideoPlay, 'frm player');
+	console.log(youtubeVIdeo);
 	return (
 		<div className={classes.root}>
 			<div className="border m-auto ">
-				<ReactPlayer playing url={onClickVideoPlay} width="100%" controls onEnded={() => nextPlay()} />
+				<ReactPlayer url={youtubeVIdeo} width="100%" controls />
 			</div>
 			<div className=" d-flex flex-wrap justify-content-evenly mt-2 p-2">
 				{actionBtns &&

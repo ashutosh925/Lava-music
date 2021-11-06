@@ -109,12 +109,13 @@ export const useStyles = makeStyles((theme, props) => ({
 		textAlign: 'center'
 	},
 	singleVidImg: {
-		width: '100%'
+		width: '95%',
+		height: '100px'
 	},
 	singleViTitles: {
 		'& h5': {
 			fontSize: '12px',
-			margin: '2px 5px !important'
+			margin: '5px 5px !important'
 		},
 		[theme.breakpoints.down('600')]: {
 			margin: 'auto  5px !important',
