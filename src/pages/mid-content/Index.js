@@ -63,11 +63,12 @@ const MidContent = () => {
 		console.log('togling', inputFieldState);
 	};
 
-	console.log(youtubeVIdeo);
+	console.log(youtubeVIdeo[0]);
+	const utubeUrl="https://www.youtube.com/watch?v=J9_DNjMM7TY"
 	return (
 		<div className={classes.root}>
 			<div className="border m-auto ">
-				<ReactPlayer url={youtubeVIdeo} width="100%" controls />
+				<ReactPlayer url={youtubeVIdeo === '' ? utubeUrl : youtubeVIdeo } width="100%" controls />
 			</div>
 			<div className=" d-flex flex-wrap justify-content-evenly mt-2 p-2">
 				{actionBtns &&

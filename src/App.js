@@ -1,13 +1,16 @@
 import './App.css';
 import React from 'react';
 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+//files import
+
 import Container from './container/Container';
 import ProtectedRoute from './utitils/ProtectedRoutes';
 import Login from './pages/signin/Index';
 import Signup from './pages/signup/Index';
+import userprofile from './pages/user-profile/Index';
 // import { useSelector } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 const App = () => {
 	// const state = useSelector((state) => state.auth.isAuthenticated);
 
@@ -18,6 +21,7 @@ const App = () => {
 					<Route exact path="/" component={Login} />
 					<Route exact path="/signup" component={Signup} />
 					<ProtectedRoute exact path="/lavamusic" component={Container} />
+					<ProtectedRoute exact path="/user-profile" component={userprofile} />
 					<Route>
 						<h3 className="text-center" style={{ height: '100vh' }}>
 							404 not Found

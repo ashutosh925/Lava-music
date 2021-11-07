@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 //files import
 import { useStyles } from './Styles';
+import { signin } from '../../redux/actions/Authentication';
 const Login = () => {
 	let history = useHistory();
 	const classes = useStyles();
@@ -14,6 +15,7 @@ const Login = () => {
 
 	const { register, handleSubmit, formState: { errors } } = useForm();
 	const [ wrongInfo, setWrongInfo ] = useState(false);
+	const [ errorMsg, setErrorMsg ] = useState(false);
 	const [ credentals ] = useState({
 		email: 'fiverr@gmail.com',
 		password: '12345'
@@ -25,17 +27,32 @@ const Login = () => {
 		}
 		// dispatch(youtube());
 	});
-	const onSubmit = (data) => {
-		if (credentals.email === data.Email && credentals.password === data.Password) {
-			dispatch({ type: 'LOGIN' });
-			history.push('/lavamusic');
-			console.log('login successful');
-			setWrongInfo(false);
-		} else {
-			setWrongInfo(true);
+	const onSubmit = async (data) => {
+		const response = await dispatch(
+			signin({
+				email: data.Email,
+				password: data.Password
+			})
+		);
+		switch (response) {
+			case 'signIn':
+				// history.push('/lavamusic');
+				// dispatch({ type: 'LOGIN' });
+				break;
+			case 'auth/wrong-password':
+				alert('Wrong password try again');
+				break;
+			case ' uth/user-not-found':
+				alert('User not found');
+				break;
+			case 'auth/network-request-failed':
+				alert('check your internet connection');
+				break;
+			default:
+				break;
 		}
+		console.log(response);
 	};
-	console.log(isAuth, 'sign in rendering');
 	return (
 		<div className={classes.root}>
 			<p>email :fiverr@gmail.com</p>
@@ -63,15 +80,15 @@ const Login = () => {
 							required
 							type="password"
 							placeholder="Enter Password"
-							{...register('Password', { required: true })}
+							{...register('Password', { required: true, minLength: 6, maxLength: 25 })}
 						/>
 						<br />
-						{errors.Password && 'Password length cannot less than 5'}
+						{errors.Password && 'Password length cannot less than 6'}
 					</div>
 
 					<button>Login</button>
 				</form>
-				<div className="w-50 m-auto">{wrongInfo ? <h5>Incorrect credentals</h5> : null}</div>
+				<div className="w-50 m-auto">{errorMsg ? <h5>Incorrect credentals</h5> : null}</div>
 				<div className={classes.divider}>
 					<h5>OR</h5>
 				</div>
@@ -83,3 +100,13 @@ const Login = () => {
 	);
 };
 export default Login;
+
+// if (credentals.email === data.Email && credentals.password === data.Password) {
+// 	dispatch({ type: 'LOGIN' });
+// 	const
+// 	history.push('/lavamusic');
+// 	console.log('login successful');
+// 	setWrongInfo(false);
+// } else {
+// 	setWrongInfo(true);
+// }

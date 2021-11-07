@@ -16,3 +16,6 @@ export const PLAY_THIS_SONG = 'PLAY_THIS_SONG';
 
 export const VIMEO_PLAYLIST = 'VIMEO_PLAYLIST';
 export const USER_UPLOAD_Playlist = 'USER_UPLOAD_Playlist';
+
+//user Auth
+export const GET_USER_DATA = 'GET_USER_DATA';

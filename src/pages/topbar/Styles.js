@@ -36,5 +36,13 @@ export const useStyles = makeStyles((theme, props) => ({
 			width: '25px',
 			height: '25px'
 		}
+	},
+	alertMsg: {
+		width: '30%',
+		margin: 'auto',
+		position: 'fixed',
+		top: 50,
+		left: 50,
+		right: 50
 	}
 }));

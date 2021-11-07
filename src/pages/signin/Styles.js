@@ -4,7 +4,10 @@ export const useStyles = makeStyles((theme, props) => ({
 	root: {
 		width: '30%',
 		margin: 'auto',
-		height: '100vh'
+		height: '100vh',
+		[theme.breakpoints.down('500')]: {
+			width: '50%'
+		}
 	},
 	inputParentDiv: {
 		textAlign: 'center',
@@ -18,7 +21,11 @@ export const useStyles = makeStyles((theme, props) => ({
 			border: 'none',
 			background: '#5a585899',
 			margin: '20px 0px',
-			color: '#FFFFFF'
+			color: '#FFFFFF',
+			[theme.breakpoints.down('500')]: {
+				height: '30px',
+				width: '100px'
+			}
 		}
 	},
 	inputSearch: {
@@ -53,7 +60,10 @@ export const useStyles = makeStyles((theme, props) => ({
 				position: 'absolute',
 				left: 80,
 				top: '50%',
-				zIndex: 1
+				zIndex: 1,
+				[theme.breakpoints.down('700')]: {
+					left: 40
+				}
 			},
 			'&::before': {
 				content: '""',
@@ -62,7 +72,10 @@ export const useStyles = makeStyles((theme, props) => ({
 				position: 'absolute',
 				right: 80,
 				top: '50%',
-				zIndex: 1
+				zIndex: 1,
+				[theme.breakpoints.down('700')]: {
+					right: 40
+				}
 			}
 		}
 	}

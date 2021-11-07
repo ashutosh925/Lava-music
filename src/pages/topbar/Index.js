@@ -1,27 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // material ui imports
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { Button } from '@material-ui/core';
 // hooks
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // files import
 import { ReactComponent as Tvlogo } from '../../assets/svg/tvsvg.svg';
 import { useStyles } from './Styles';
 import user1 from '../../assets/user1.jpg';
-
+import { signout } from '../../redux/actions/Authentication';
 const Topbar = () => {
 	const dispatch = useDispatch();
 	const classes = useStyles();
 	const history = useHistory();
-	const logout = () => {
-		dispatch({ type: 'LOG OUT' });
+	const userData = useSelector((state) => state.auth.userData);
+	useEffect(() => {}, []);
+	const logout = async () => {
+		// dispatch({ type: 'LOG OUT' });
+		// history.push('/');
+		const response = await dispatch(signout());
 		history.push('/');
-		console.log('user logged out');
 	};
+	const profileVisit = () => {
+		history.push('/user-profile');
+	};
+
+	console.log(userData);
 	return (
 		<div className={classes.root}>
 			<AppBar position="static" color="transparent" className={classes.appbarParent}>
@@ -41,13 +50,15 @@ const Topbar = () => {
 					<Grid item xs={6} sm={4} md={4} lg={4}>
 						<div className="d-flex justify-content-end align-items-center">
 							<div className="d-flex h-100 align-items-center">
-								<h5 className={classes.userName}>Username</h5>
-								<Avatar alt="user image" src={user1} className={classes.userImage} />
+								<Button onClick={profileVisit}>
+									<h5 className={classes.userName}>{userData.email}</h5>
+									<Avatar alt="user image" src={user1} className={classes.userImage} />
+								</Button>
 								<button
 									style={{ color: '#d1d1d1', border: 'none', background: 'none' }}
 									onClick={logout}
 								>
-									<ExitToAppIcon fontSize="medium" />
+									<ExitToAppIcon fontSize="large" />
 								</button>
 							</div>
 						</div>

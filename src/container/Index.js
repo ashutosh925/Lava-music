@@ -17,8 +17,8 @@ const Container = () => {
 	return (
 		<div>
 			<Topbar />
-			<div className={classes.root}>
-				<Hidden only={[ 'xs', 'sm', 'md' ]}>
+			<Hidden only={[ 'xs', 'sm', 'md' ]}>
+				<div className={classes.root}>
 					<Grid container>
 						<Grid item lg={4}>
 							<h1>root 2</h1>
@@ -31,11 +31,11 @@ const Container = () => {
 							<RightSideParent />
 						</Grid>
 					</Grid>
-				</Hidden>
-			</div>
+				</div>
+			</Hidden>
 
-			<div className={classes.root2}>
-				<Hidden only={[ 'lg', 'xl' ]}>
+			<Hidden only={[ 'lg', 'xl' ]}>
+				<div className={classes.root2}>
 					<Grid container justifyContent="center">
 						<Grid item md={7}>
 							<MidContent />
@@ -48,8 +48,8 @@ const Container = () => {
 							<LeftSide />
 						</Grid>
 					</Grid>
-				</Hidden>
-			</div>
+				</div>
+			</Hidden>
 		</div>
 	);
 };
