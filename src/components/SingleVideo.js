@@ -44,9 +44,8 @@ const SingleVideo = (props) => {
 					<Grid item xs={12} sm={6} md={6} lg={6}>
 						<div className={classes.singleViTitles}>
 							<h5>Title: {props.title}</h5>
-
 							<h5 className={classes.views}>Views: {formatViews(props.views)} </h5>
-							<h5>channelTitle: {props.category}</h5>
+							<h5>channel: {props.category}</h5>
 						</div>
 					</Grid>
 				</Grid>

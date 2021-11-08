@@ -2,13 +2,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme, props) => ({
 	root: {
-		height: '100vh'
+		height: '100vh',
+		padding: '30px 0px'
 	},
 	userParentDiv: {
-		width: '20%',
+		margin: '70px auto 0px auto',
+		width: '25%',
 		height: '350px',
 		border: '1px solid #e0e0e0',
-		margin: 'auto',
+
 		textAlign: 'center',
 		padding: '20px',
 		[theme.breakpoints.down('600')]: {
@@ -16,8 +18,8 @@ export const useStyles = makeStyles((theme, props) => ({
 		}
 	},
 	userImg: {
-		width: '130px',
-		height: '130px',
+		width: '115px',
+		height: '114px',
 		borderRadius: '50%',
 		margin: '5px 0px',
 		[theme.breakpoints.down('600')]: {

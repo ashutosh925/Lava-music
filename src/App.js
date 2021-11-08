@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //files import
 
-import Container from './container/Container';
+import Container from './container/Index';
 import ProtectedRoute from './utitils/ProtectedRoutes';
 import Login from './pages/signin/Index';
 import Signup from './pages/signup/Index';
@@ -20,8 +20,8 @@ const App = () => {
 				<Switch>
 					<Route exact path="/" component={Login} />
 					<Route exact path="/signup" component={Signup} />
-					<ProtectedRoute exact path="/lavamusic" component={Container} />
-					<ProtectedRoute exact path="/user-profile" component={userprofile} />
+					<Route exact path="/lavamusic" component={Container} />
+					<Route exact path="/user-profile" component={userprofile} />
 					<Route>
 						<h3 className="text-center" style={{ height: '100vh' }}>
 							404 not Found

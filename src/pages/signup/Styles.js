@@ -9,19 +9,18 @@ export const useStyles = makeStyles((theme, props) => ({
 		height: '100vh'
 	},
 	formParent: {
-		margin: ' 5% auto',
+		margin: ' 0px auto',
 		border: '1px solid white',
-		width: '35%'
+		width: '30%'
 	},
 	inputSignup: {
-		padding: '15px',
+		padding: '10px',
 		textAlign: 'center',
 		margin: 'auto',
 		'& input': {
 			width: '70%',
-			height: '30px !important',
 			border: 'none',
-			padding: '5px 10px',
+			padding: '2px 10px',
 			background: '#5a585899',
 			color: 'white',
 			'&::placeholder': {
@@ -33,12 +32,16 @@ export const useStyles = makeStyles((theme, props) => ({
 			}
 		},
 		'& button': {
-			height: '33px',
-			width: '120px',
+			height: '30px',
+			width: '110px',
 			border: 'none',
 			background: '#5a585899',
-			margin: '20px 0px',
-			color: '#FFFFFF'
+			margin: '15px 0px',
+			color: '#FFFFFF',
+			[theme.breakpoints.down('600')]: {
+				height: '27px',
+				width: '70px'
+			}
 		}
 	},
 	errorMsg: {
@@ -51,5 +54,23 @@ export const useStyles = makeStyles((theme, props) => ({
 			color: '#FFFFFF',
 			cursor: 'pointer'
 		}
+	},
+	imageUploadInput: {
+		width: '50% !important',
+		margin: '0px 0px 0px 40px',
+		fontSize: '13px',
+		[theme.breakpoints.down('600')]: {
+			height: '27px',
+			width: '100% !important',
+			margin: '0px 0px 0px 0px',
+			fontSize: '12px'
+		}
+	},
+	labels: {
+		fontSize: '17px'
+	},
+	imgPreview: {
+		width: '77px',
+		height: '60px'
 	}
 }));

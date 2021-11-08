@@ -1,7 +1,10 @@
 import { LOG_IN, LOG_OUT, GET_USER_DATA } from '../../utitils/Types';
 const initialState = {
-	isAuthenticated: true,
-	userData: ''
+	isAuthenticated: false,
+	userId: '',
+	userName: '',
+	userEmail: '',
+	userPhoto: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,12 +19,21 @@ const reducer = (state = initialState, action) => {
 		case LOG_OUT:
 			return {
 				...state,
-				isAuthenticated: false
+				isAuthenticated: false,
+				userId: "",
+				userName: "",
+				userEmail: "",
+				userPhoto: ""
 			};
 		case GET_USER_DATA:
+			console.log(action.payload?.photoURL,"fom red")
 			return {
 				...state,
-				userData: action.payload
+				isAuthenticated: true,
+				userId: action.payload?.uid,
+				userName: action.payload?.displayName,
+				userEmail: action.payload?.email,
+				userPhoto: action.payload?.photoURL
 			};
 		default:
 			return state;

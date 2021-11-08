@@ -18,11 +18,11 @@ const Topbar = () => {
 	const dispatch = useDispatch();
 	const classes = useStyles();
 	const history = useHistory();
-	const userData = useSelector((state) => state.auth.userData);
+	const userData = useSelector((state) => state.auth);
 	useEffect(() => {}, []);
 	const logout = async () => {
-		// dispatch({ type: 'LOG OUT' });
-		// history.push('/');
+		dispatch({ type: 'LOG OUT' });
+		history.push('/');
 		const response = await dispatch(signout());
 		history.push('/');
 	};
@@ -30,10 +30,9 @@ const Topbar = () => {
 		history.push('/user-profile');
 	};
 
-	console.log(userData);
 	return (
 		<div className={classes.root}>
-			<AppBar position="static" color="transparent" className={classes.appbarParent}>
+			<AppBar position="sticky" color="transparent" className={classes.appbarParent}>
 				<Grid container>
 					<Grid item xs={12} sm={4} md={4} lg={4}>
 						<div className="d-flex h-100 justify-content-center align-items-center">
@@ -51,8 +50,8 @@ const Topbar = () => {
 						<div className="d-flex justify-content-end align-items-center">
 							<div className="d-flex h-100 align-items-center">
 								<Button onClick={profileVisit}>
-									<h5 className={classes.userName}>{userData.email}</h5>
-									<Avatar alt="user image" src={user1} className={classes.userImage} />
+									<h5 className={classes.userName}>{userData.userName}</h5>
+									<Avatar alt="user image" src={userData.userPhoto} className={classes.userImage} />
 								</Button>
 								<button
 									style={{ color: '#d1d1d1', border: 'none', background: 'none' }}

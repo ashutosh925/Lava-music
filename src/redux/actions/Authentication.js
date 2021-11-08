@@ -1,7 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+	signOut,
+	updateProfile
+} from 'firebase/auth';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,13 +26,49 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
 
-//
-export const signup = ({ email, password }) => async (dispatch, getState) => {
+const auth = getAuth(app);
+const storage = getStorage(app, 'gs://lava-music-e97fd.appspot.com');
+const mountainImagesRef = ref(storage, 'images/mountains.jpg');
+
+//image upload function
+
+const uploadImage = async (imgsend, userId) => {
+	const storageRef = ref(storage, userId);
+
+	const uploadTask = await uploadBytes(storageRef, imgsend).then((snapshot) => {
+		console.log('image  uploaded');
+	});
 	try {
+		const getUrl = await getDownloadURL(ref(storage, userId));
+		console.log('from url', getUrl);
+		return getUrl;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+//update profile
+
+const updateData = async (displayName, responseFromImg) => {
+	try {
+		const nameUpdate = updateProfile(auth.currentUser, { displayName: displayName, photoURL: responseFromImg });
+		console.log(nameUpdate, 'from signup update profile');
+	} catch (error) {
+		console.log('update name failed', error);
+	}
+};
+
+//sigup in function
+
+export const signup = ({ email, password, displayName, imgsend }) => async () => {
+	try {
+		//user create
 		const response = await createUserWithEmailAndPassword(auth, email, password);
+		//user image upload
+		const responseFromImg = await uploadImage(imgsend, response.user.uid);
+		//user name and image update
+		const updateRes = await updateData(displayName, responseFromImg);
 
 		return response.operationType;
 	} catch (error) {
@@ -35,11 +78,14 @@ export const signup = ({ email, password }) => async (dispatch, getState) => {
 	}
 };
 
-export const signin = ({ email, password, displayName }) => async (dispatch, getState) => {
+//sigin in function
+
+export const signin = ({ email, password, displayName }) => async (dispatch) => {
 	try {
 		const response = await signInWithEmailAndPassword(auth, email, password, displayName);
-		console.log(response.user);
-		dispatch({ type: 'GET_USER_DATA', payload: response });
+		const userId = response.user.uid;
+
+		dispatch({ type: 'GET_USER_DATA', payload: response.user });
 		return response.operationType;
 	} catch (error) {
 		console.log(error.code);
@@ -47,10 +93,12 @@ export const signin = ({ email, password, displayName }) => async (dispatch, get
 		// return { message: code ,};
 	}
 };
-export const signout = () => async (dispatch, getState) => {
+
+//sign out function
+export const signout = () => async () => {
 	try {
 		const response = await signOut(auth);
-		console.log(response);
+		console.log(response, 'success');
 		return 'user Log out';
 	} catch (error) {
 		console.log(error);

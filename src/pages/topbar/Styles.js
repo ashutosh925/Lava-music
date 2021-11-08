@@ -5,7 +5,8 @@ export const useStyles = makeStyles((theme, props) => ({
 		backgroundColor: '#00000052'
 	},
 	appbarParent: {
-		padding: '10px 10px !important'
+		padding: '10px 10px !important',
+		toolbar: theme.mixins.toolbar
 	},
 	userName: {
 		color: '#d1d1d1',

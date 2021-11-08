@@ -34,32 +34,20 @@ const Login = () => {
 				password: data.Password
 			})
 		);
-		switch (response) {
-			case 'signIn':
-				// history.push('/lavamusic');
-				// dispatch({ type: 'LOGIN' });
-				break;
-			case 'auth/wrong-password':
-				alert('Wrong password try again');
-				break;
-			case ' uth/user-not-found':
-				alert('User not found');
-				break;
-			case 'auth/network-request-failed':
-				alert('check your internet connection');
-				break;
-			default:
-				break;
+		if (response.includes('signIn')) {
+			alert('user  found');
+			history.push('/lavamusic');
+			dispatch({ type: 'LOGIN' });
 		}
-		console.log(response);
+
+		if (response.includes('uth/user-not-found')) alert('user not found');
+		if (response.includes('auth/wrong-password')) alert('Wrong password try again');
+		if (response.includes('auth/network-request-failed')) alert('check your internet connection');
 	};
 	return (
 		<div className={classes.root}>
-			<p>email :fiverr@gmail.com</p>
-			<p>password :12345</p>
 			<div className={classes.inputParentDiv}>
 				<h5>User Login</h5>
-
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className={classes.inputSearch}>
 						<input
@@ -81,6 +69,7 @@ const Login = () => {
 							type="password"
 							placeholder="Enter Password"
 							{...register('Password', { required: true, minLength: 6, maxLength: 25 })}
+							value={123456}
 						/>
 						<br />
 						{errors.Password && 'Password length cannot less than 6'}
