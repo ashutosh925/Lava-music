@@ -2,23 +2,23 @@ import React, { useState, useLayoutEffect } from 'react';
 //hooks
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 //files import
 import { useStyles } from './Styles';
 import { signin } from '../../redux/actions/Authentication';
+import AlertMsg from '../../components/Alertmsg';
 const Login = () => {
 	let history = useHistory();
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const isAuth = useSelector((state) => state.auth.isAuthenticated);
-
+	const [ incorrentCredentials, setIncrecredentails ] = useState(false);
+	const [ buttonState, setButtonState ] = useState(false);
 	const { register, handleSubmit, formState: { errors } } = useForm();
-	const [ wrongInfo, setWrongInfo ] = useState(false);
-	const [ errorMsg, setErrorMsg ] = useState(false);
-	const [ credentals ] = useState({
-		email: 'fiverr@gmail.com',
-		password: '12345'
+	const [ alertMsg, setAlertMsg ] = useState({
+		notFound: false,
+		error: false
 	});
 
 	useLayoutEffect(() => {
@@ -27,57 +27,85 @@ const Login = () => {
 		}
 		// dispatch(youtube());
 	});
+
 	const onSubmit = async (data) => {
+		setButtonState(true);
+		setIncrecredentails(false);
 		const response = await dispatch(
 			signin({
 				email: data.Email,
 				password: data.Password
 			})
 		);
-		if (response.includes('signIn')) {
-			alert('user  found');
+		if (response?.includes('signIn')) {
 			history.push('/lavamusic');
 			dispatch({ type: 'LOGIN' });
+			setButtonState(false);
 		}
 
-		if (response.includes('uth/user-not-found')) alert('user not found');
-		if (response.includes('auth/wrong-password')) alert('Wrong password try again');
+		if (response?.includes('uth/user-not-found')) {
+			setButtonState(false);
+			setAlertMsg({
+				...alertMsg,
+				notFound: true
+			});
+			setTimeout(() => {
+				setAlertMsg({
+					...alertMsg,
+					notFound: false
+				});
+			}, 3000);
+		}
+		if (response?.includes('auth/wrong-password')) {
+			setButtonState(false);
+			setIncrecredentails(true);
+		}
 		if (response.includes('auth/network-request-failed')) alert('check your internet connection');
 	};
+	console.log(buttonState);
 	return (
 		<div className={classes.root}>
 			<div className={classes.inputParentDiv}>
-				<h5>User Login</h5>
+				<h4 className="mb-4 mt-3">User Login</h4>
+				{alertMsg.notFound ? <AlertMsg msg="User not found" variant="error" /> : null}
+				{alertMsg.error ? <AlertMsg msg="Check your Internet Connection" variant="error" /> : null}
+
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className={classes.inputSearch}>
+						<h5>Email</h5>
 						<input
-							required
 							type="text"
-							placeholder="Enter Email"
 							{...register('Email', {
-								required: true,
-								pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i
+								required: 'Email is Required',
+								pattern: {
+									value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+									message: 'Enter Valid Email'
+								}
 							})}
 						/>
 						<br />
-						{errors.Email && 'Enter correct Email'}
-						<br />
-						<br />
-
+						{errors.Email && <span style={{ color: 'red' }}>{errors.Email.message} </span>}
+						<h5>Password</h5>
 						<input
-							required
 							type="password"
-							placeholder="Enter Password"
-							{...register('Password', { required: true, minLength: 6, maxLength: 25 })}
-							value={123456}
+							{...register('Password', {
+								required: 'Password is required',
+								minLength: { value: 5, message: 'Password length cannot less than 6' },
+								maxLength: 25
+							})}
 						/>
 						<br />
-						{errors.Password && 'Password length cannot less than 6'}
+						{errors.Password && <span style={{ color: 'red' }}>{errors.Password.message}</span>}
 					</div>
-
-					<button>Login</button>
+					{incorrentCredentials ? <p>Wrong password</p> : null}
+					<button disabled={buttonState} style={{ background: buttonState ? 'grey' : '#5a585899' }}>
+						Login
+					</button>
+					<br />
+					<Link to="/resetpassword" className={classes.resetpass}>
+						Forgot Password ? <span style={{ color: 'red' }}>Click here</span>
+					</Link>
 				</form>
-				<div className="w-50 m-auto">{errorMsg ? <h5>Incorrect credentals</h5> : null}</div>
 				<div className={classes.divider}>
 					<h5>OR</h5>
 				</div>
@@ -89,13 +117,3 @@ const Login = () => {
 	);
 };
 export default Login;
-
-// if (credentals.email === data.Email && credentals.password === data.Password) {
-// 	dispatch({ type: 'LOGIN' });
-// 	const
-// 	history.push('/lavamusic');
-// 	console.log('login successful');
-// 	setWrongInfo(false);
-// } else {
-// 	setWrongInfo(true);
-// }

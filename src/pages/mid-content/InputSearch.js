@@ -10,7 +10,7 @@ const InputSearch = () => {
 	};
 	return (
 		<div>
-			<div class="input-group" style={{ background: '#5a585899' }}>
+			<div className="input-group" style={{ background: '#5a585899' }}>
 				<input type="text" className={classes.inputSearch} placeholder="" />
 				<div class="input-group-append">
 					<button className={classes.buttonStyleRemove}>

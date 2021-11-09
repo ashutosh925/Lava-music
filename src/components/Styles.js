@@ -126,5 +126,16 @@ export const useStyles = makeStyles((theme, props) => ({
 		'&:hover': {
 			cursor: 'pointer'
 		}
+	},
+	alertMsg: {
+		position: 'absolute',
+		width: '30%',
+		margin: 'auto',
+		top: 10,
+		left: 50,
+		right: 50,
+		[theme.breakpoints.down('700')]: {
+			width: '60%'
+		}
 	}
 }));

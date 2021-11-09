@@ -62,13 +62,15 @@ const MidContent = () => {
 		setinputFieldState(true);
 		console.log('togling', inputFieldState);
 	};
-
-	console.log(youtubeVIdeo[0]);
-	const utubeUrl="https://www.youtube.com/watch?v=J9_DNjMM7TY"
+	// 578385979
+	// console.log(youtubeVIdeo[0]);
+	const utubeUrl="https://www.youtube.com/"
 	return (
 		<div className={classes.root}>
-			<div className="border m-auto ">
-				<ReactPlayer url={youtubeVIdeo === '' ? utubeUrl : youtubeVIdeo } width="100%" controls />
+			<div className="border m-auto "> 
+				{/* <ReactPlayer  url={youtubeVIdeo === '' ? utubeUrl : youtubeVIdeo } width="100%" controls /> */}
+				<ReactPlayer  url={"http://player.vimeo.com/video/230830163"} width="100%" />
+
 			</div>
 			<div className=" d-flex flex-wrap justify-content-evenly mt-2 p-2">
 				{actionBtns &&

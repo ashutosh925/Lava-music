@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 //material ui import
 import SearchIcon from '@material-ui/icons/Search';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
@@ -16,6 +16,7 @@ const YoutubeSearch = () => {
 	const dispatch = useDispatch();
 	const classes = useStyles();
 	const {respononseResults,playlist} = useSelector((state) => state.utube);
+
 	const handleChange = (event) => {
 		setSearchBar({ query: event.target.value });
 	};
@@ -58,8 +59,9 @@ const YoutubeSearch = () => {
 		console.log(songCheck)
 
 	}
+	
 	return (
-		<div>
+		<>
 			<h5 className="text-center">Youtube Search</h5>
 			<div className={classes.inputParent}>
 				<div className="me-2">
@@ -73,13 +75,14 @@ const YoutubeSearch = () => {
 					type="text"
 					className={classes.inputSearch}
 					placeholder="Search..."
-					value={searchBar.query}
+					
 					onChange={(e) => handleChange(e)}
 					onKeyDown={(key) => handlekeyDown(key)}
 				/>
 			</div>
 			<div className={classes.youtubeRoot}>
-				{respononseResults &&
+			{respononseResults.length ===0 ? <h5 className="text-center">No Results Found</h5> :
+				(respononseResults &&
 					respononseResults.map((items, idx) => {
 						return (
 							<div key={idx}>
@@ -92,9 +95,10 @@ const YoutubeSearch = () => {
 								/>
 							</div>
 						);
-					})}
+					}))
+			}
 			</div>
-		</div>
+		</>
 	);
 };
 export default React.memo(YoutubeSearch);

@@ -9,9 +9,13 @@ export const useStyles = makeStyles((theme, props) => ({
 		height: '100vh'
 	},
 	formParent: {
+		padding: '10px 0px',
 		margin: ' 0px auto',
 		border: '1px solid white',
-		width: '30%'
+		width: '30%',
+		[theme.breakpoints.down('650')]: {
+			width: '60%'
+		}
 	},
 	inputSignup: {
 		padding: '10px',
@@ -56,14 +60,19 @@ export const useStyles = makeStyles((theme, props) => ({
 		}
 	},
 	imageUploadInput: {
-		width: '50% !important',
-		margin: '0px 0px 0px 40px',
+		width: '60% !important',
 		fontSize: '13px',
+		background: 'transparent !important',
+
 		[theme.breakpoints.down('600')]: {
 			height: '27px',
 			width: '100% !important',
 			margin: '0px 0px 0px 0px',
 			fontSize: '12px'
+		},
+		"&:input[type='file']": {
+			color: 'yellow',
+			fontSize: '100px !important'
 		}
 	},
 	labels: {

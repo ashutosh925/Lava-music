@@ -1,13 +1,13 @@
-import { GET_RESULT, PLAY_THIS_SONG, ADD_TO_PLAYPLIST, DELETE_THIS_SONG } from '../../utitils/Types';
+import { GET_RESULT, PLAY_THIS_SONG, ADD_TO_PLAYPLIST, DELETE_THIS_SONG, VIMEO_GET_RESULT } from '../../utitils/Types';
 const initialState = {
 	respononseResults: '',
 	utubeVideoPlay: '',
 	playlist: []
 };
 
-const utubereducer = (state = initialState, action) => {
+const videmoReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case GET_RESULT:
+		case VIMEO_GET_RESULT:
 			return {
 				...state,
 				respononseResults: action.payload
@@ -32,4 +32,4 @@ const utubereducer = (state = initialState, action) => {
 			return state;
 	}
 };
-export default utubereducer;
+export default videmoReducer;

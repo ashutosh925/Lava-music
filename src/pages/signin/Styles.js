@@ -2,16 +2,19 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme, props) => ({
 	root: {
-		width: '30%',
+		width: '100%',
 		margin: 'auto',
-		height: '100vh',
-		[theme.breakpoints.down('500')]: {
-			width: '50%'
-		}
+		padding: '30px 0px 0px 0px',
+		height: '100vh'
 	},
 	inputParentDiv: {
+		width: '30%',
+		margin: 'auto',
 		textAlign: 'center',
 		border: '1px solid white',
+		[theme.breakpoints.down('700')]: {
+			width: '60%'
+		},
 		'& h5': {
 			margin: '20px 0px'
 		},
@@ -34,7 +37,7 @@ export const useStyles = makeStyles((theme, props) => ({
 			width: '80%',
 			border: 'none',
 			padding: '5px 10px',
-
+			margin: ' 0px 0px 10px 0px',
 			background: '#5a585899',
 			color: 'white',
 			'&::placeholder': {
@@ -62,7 +65,7 @@ export const useStyles = makeStyles((theme, props) => ({
 				top: '50%',
 				zIndex: 1,
 				[theme.breakpoints.down('700')]: {
-					left: 40
+					left: 60
 				}
 			},
 			'&::before': {
@@ -74,9 +77,16 @@ export const useStyles = makeStyles((theme, props) => ({
 				top: '50%',
 				zIndex: 1,
 				[theme.breakpoints.down('700')]: {
-					right: 40
+					right: 60
 				}
 			}
+		}
+	},
+	resetpass: {
+		textDecoration: 'none',
+		color: 'white',
+		'&:hover': {
+			color: 'white'
 		}
 	}
 }));

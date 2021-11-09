@@ -10,6 +10,7 @@ import ProtectedRoute from './utitils/ProtectedRoutes';
 import Login from './pages/signin/Index';
 import Signup from './pages/signup/Index';
 import userprofile from './pages/user-profile/Index';
+import PasswordReset from './pages/password-reset/Index';
 // import { useSelector } from 'react-redux';
 const App = () => {
 	// const state = useSelector((state) => state.auth.isAuthenticated);
@@ -20,8 +21,9 @@ const App = () => {
 				<Switch>
 					<Route exact path="/" component={Login} />
 					<Route exact path="/signup" component={Signup} />
-					<Route exact path="/lavamusic" component={Container} />
-					<Route exact path="/user-profile" component={userprofile} />
+					<ProtectedRoute exact path="/resetpassword" component={PasswordReset} />
+					<ProtectedRoute exact path="/lavamusic" component={Container} />
+					<ProtectedRoute exact path="/user-profile" component={userprofile} />
 					<Route>
 						<h3 className="text-center" style={{ height: '100vh' }}>
 							404 not Found

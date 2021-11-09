@@ -29,7 +29,7 @@ const Topbar = () => {
 	const profileVisit = () => {
 		history.push('/user-profile');
 	};
-
+	console.log(userData);
 	return (
 		<div className={classes.root}>
 			<AppBar position="sticky" color="transparent" className={classes.appbarParent}>
