@@ -55,15 +55,15 @@ const Profile = () => {
 		}
 	};
 	return (
-		<div className={classes.root}>
+		<div className={classes.root} style={{ height: editCredentials ? '100%' : '100vh' }}>
 			<h5 className={classes.userHeading}>User Profile Information</h5>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className={classes.userParentDiv}>
-					<div className="d-flex  w-25">
-						<button onClick={editMode} style={{ background: 'none' }}>
-							{editCredentials ? <CancelIcon /> : <EditIcon />}
-						</button>
-					</div>
+			<div className={classes.userParentDiv}>
+				<div className="d-flex  w-25">
+					<button onClick={editMode} style={{ background: 'none' }}>
+						{editCredentials ? <CancelIcon /> : <EditIcon />}
+					</button>
+				</div>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className="d-flex justify-content-center">
 						<Avatar alt="user image" src={userData.userPhoto} className={classes.userImage} />
 					</div>
@@ -112,8 +112,8 @@ const Profile = () => {
 					</p>
 					<br />
 					{editCredentials ? <button>Submit</button> : null}
-				</div>
-			</form>
+				</form>
+			</div>
 			<div className="d-flex justify-content-center mt-4 ">
 				<Button variant="contained" color="primary" size="medium" onClick={goBack} className={classes.goBckBtn}>
 					Go Back

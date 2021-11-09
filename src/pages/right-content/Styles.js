@@ -37,15 +37,21 @@ export const useStyles = makeStyles((theme, props) => ({
 	youtubeRoot: {
 		height: '400px',
 		margin: '0px 0px 10px 0px',
-
 		overflowY: 'auto !important'
 	},
 
 	// vimeoRoot
 
 	vimeoRoot: {
-		border: '1px solid white',
 		height: '400px',
 		margin: '10px 0px'
+	},
+	vimeoVideosShow: {
+		height: '320px',
+		display: 'flex',
+		flexDirection: 'column',
+		width: '100%',
+		margin: '20px 0px 0px 0px',
+		overflowY: 'auto !important'
 	}
 }));

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Moment from 'react-moment';
 //material ui import
 import SearchIcon from '@material-ui/icons/Search';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
@@ -10,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 //files import
 import vimeo from '../../redux/actions/VimeoAction';
-
+import VimeoVideos from '../../components/VimeoVideos';
 import SingleVideoObject from '../../components/SingleVideo';
 
 import { useStyles } from './Styles';
@@ -36,7 +37,10 @@ const YoutubeSearch = () => {
 		}
 		console.log('check');
 	};
-	// console.log(vimeoData);
+	const getVideo = (video) => {
+		console.log(video);
+	};
+	console.log(vimeoData);
 	// console.log(state[0].pictures.sizes[4].link);
 	// console.log(state[0].uri);
 	// console.log(state[0].name);
@@ -66,11 +70,22 @@ const YoutubeSearch = () => {
 					onKeyDown={(key) => handlekeyDown(key)}
 				/>
 				<div />
+			</div>
+
+			<div className={classes.vimeoVideosShow}>
 				{vimeoData &&
-					vimeoData.map((items, idx) => {
+					vimeoData.map((items, index) => {
 						return (
 							<div>
-								<SingleVideoObject img={items.pictures.sizes[6].link}  title={items?.name} icon1=<AddIcon/> icon2=<AddIcon/> />
+								<VimeoVideos
+									img={items.pictures.sizes[4].link}
+									title={items.name}
+									duration={items.duration}
+									subtitle2={items.created_time}
+									onClick={() => getVideo(items.uri)}
+									icon1={<PlayCircleOutlineIcon />}
+									icon2={<AddIcon />}
+								/>
 							</div>
 						);
 					})}
@@ -79,11 +94,3 @@ const YoutubeSearch = () => {
 	);
 };
 export default React.memo(YoutubeSearch);
-
-	/* <SingleVideoObject title={items?.snippet?.title}
-									img={items.snippet?.thumbnails?.high?.url}
-									category={items?.snippet?.channelTitle}
-									icon1={<PlayCircleOutlineIcon onClick={() => playThisVid(items?.id?.videoId)} />}
-									icon2={<AddIcon onClick={()=>addToPlaylist(items?.id?.videoId)}/>}/>
-					</div> */
-

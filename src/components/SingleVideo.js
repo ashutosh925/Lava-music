@@ -20,7 +20,7 @@ const SingleVideo = (props) => {
 	return (
 		<div className={classes.SingleVideoParnt}>
 			<div className={classes.singleVidContainer}>
-				<Grid container justifyContent="center">
+				<Grid container justifyContent="center" style={{ height: '120px' }}>
 					<Grid item xs={1} sm={1} md={1} lg={1}>
 						<div className="d-flex  h-100 me-2 flex-column justify-content-evenly ">
 							<div className={classes.singleVideoIcons}>

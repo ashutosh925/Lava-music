@@ -137,5 +137,16 @@ export const useStyles = makeStyles((theme, props) => ({
 		[theme.breakpoints.down('700')]: {
 			width: '60%'
 		}
+	},
+
+	// vimeoRoot
+	vimeoRoot: {
+		height: 'auto',
+		padding: '4px',
+		margin: '5px 0px'
+	},
+	vimeoVdoImg: {
+		width: '50%',
+		height: '100px'
 	}
 }));
