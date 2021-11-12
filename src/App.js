@@ -21,7 +21,7 @@ const App = () => {
 				<Switch>
 					<Route exact path="/" component={Login} />
 					<Route exact path="/signup" component={Signup} />
-					<ProtectedRoute exact path="/resetpassword" component={PasswordReset} />
+					<Route exact path="/resetpassword" component={PasswordReset} />
 					<ProtectedRoute exact path="/lavamusic" component={Container} />
 					<ProtectedRoute exact path="/user-profile" component={userprofile} />
 					<Route>

@@ -8,6 +8,7 @@ const vimeo = (termFromSearchBar) => async (dispatch, getState) => {
 				q: termFromSearchBar
 			}
 		});
+
 		dispatch({ type: 'VIMEO_GET_RESULT', payload: response.data });
 
 		console.log(response);

@@ -35,7 +35,8 @@ const YoutubeSearch = () => {
 		console.log('check');
 	};
 	const playThisVid = (vidId) => {
-		dispatch({ type: 'PLAY_THIS_SONG', payload: vidId });
+		const videoUrl=`http://www.youtube.com/embed/${vidId}`
+		dispatch({ type: 'PLAY_THIS_SONG', payload: videoUrl });
 	};
 
 	const addToPlaylist = (vidId) => {
@@ -81,7 +82,7 @@ const YoutubeSearch = () => {
 				/>
 			</div>
 			<div className={classes.youtubeRoot}>
-			{respononseResults.length ===0 ? <h5 className="text-center">No Results Found</h5> :
+			{respononseResults.length ===0 ? <h5 className="text-center">No Videos Found</h5> :
 				(respononseResults &&
 					respononseResults.map((items, idx) => {
 						return (

@@ -35,7 +35,7 @@ export const useStyles = makeStyles((theme, props) => ({
 	},
 	//youtube component
 	youtubeRoot: {
-		height: '400px',
+		height: '300px',
 		margin: '0px 0px 10px 0px',
 		overflowY: 'auto !important'
 	},

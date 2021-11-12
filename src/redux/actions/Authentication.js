@@ -8,7 +8,8 @@ import {
 	updateProfile,
 	sendPasswordResetEmail,
 	updateEmail,
-	updatePassword
+	updatePassword,
+	deleteUser
 } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
@@ -25,7 +26,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 const storage = getStorage(app, 'gs://lava-music-e97fd.appspot.com');
@@ -33,6 +34,7 @@ const storage = getStorage(app, 'gs://lava-music-e97fd.appspot.com');
 //image upload function
 
 const uploadImage = async (imgsend, userId) => {
+	console.log(userId);
 	const storageRef = ref(storage, userId);
 
 	const uploadTask = await uploadBytes(storageRef, imgsend);
@@ -45,11 +47,26 @@ const uploadImage = async (imgsend, userId) => {
 	}
 };
 
-//new account
-//update name and picture
-export const updateData = (displayName) => async (dispatch) => {
+const updateToken = () => async (dispatch, getState) => {
+	const { userId } = getState().auth;
 	try {
-		const nameUpdate = updateProfile(auth.currentUser, { displayName: displayName });
+		const res = auth().revokeRefreshTokens(userId);
+		console.log(res, 'frim update token');
+	} catch (error) {
+		console.log(error);
+	}
+};
+export const updateData = ({ displayName, imgSend }) => async (dispatch, getState) => {
+	const userId = getState().auth.userId;
+	try {
+		updateToken();
+		const imgRes = await uploadImage(imgSend, userId);
+		console.log('Res from update', imgRes);
+		const nameUpdate = updateProfile(auth.currentUser, {
+			displayName: displayName,
+			photoURL: imgRes
+		});
+
 		return { res: 'updated' };
 	} catch (error) {
 		return { res: 'not updated' };
@@ -77,7 +94,6 @@ export const updatepassword = (password) => async (dispatch) => {
 };
 
 const nameUpdate = async (displayName, responseFromImg) => {
-	console.log(displayName, 'from auth usingip');
 	try {
 		const nameUpdate = updateProfile(auth.currentUser, { displayName: displayName, photoURL: responseFromImg });
 
@@ -109,13 +125,12 @@ export const signup = ({ email, password, displayName, imgsend }) => async () =>
 export const signin = ({ email, password }) => async (dispatch) => {
 	try {
 		const response = await signInWithEmailAndPassword(auth, email, password);
-		console.log(response);
 		dispatch({ type: 'GET_USER_DATA', payload: response.user });
+		console.log(response);
 		return response.operationType;
 	} catch (error) {
 		console.log(error.code);
 		return error.code;
-		// return { message: code ,};
 	}
 };
 
@@ -123,7 +138,7 @@ export const signin = ({ email, password }) => async (dispatch) => {
 export const signout = () => async () => {
 	try {
 		const response = await signOut(auth);
-		console.log(response, 'success');
+
 		return 'user Log out';
 	} catch (error) {
 		console.log(error);
@@ -137,10 +152,22 @@ export const signout = () => async () => {
 export const passwordReset = ({ email }) => async (dispatch) => {
 	try {
 		const response = await sendPasswordResetEmail(auth, email);
-		console.log(response);
+
 		return { res: 'check your Email' };
 	} catch (error) {
 		console.log(error.code);
+		return { res: error.code };
+	}
+};
+
+export const delteAccount = () => async (dispatch) => {
+	try {
+		const response = await deleteUser(auth.currentUser);
+		console.log(response, 'deleteresp');
+		return { res: 'account deleted' };
+	} catch (error) {
+		console.log(error, 'deleteresp');
+
 		return { res: error.code };
 	}
 };

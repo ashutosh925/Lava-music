@@ -1,11 +1,11 @@
-import { LOG_IN, LOG_OUT, GET_USER_DATA } from '../../utitils/Types';
+import { LOG_IN, LOG_OUT, GET_USER_DATA ,DEFAULT_PHOTO } from '../../utitils/Types';
 const initialState = {
 	isAuthenticated: false,
 	userId: '',
 	userName: '',
 	userEmail: '',
 	userPhoto: '',
-	
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
 				isAuthenticated: true
 			};
 		case LOG_OUT:
-			console.log("log out call")
+		
 			return {
 				...state,
 				isAuthenticated: false,
@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
 				userToken:""
 			};
 		case GET_USER_DATA:
-			
+		
 			return {
 				...state,
 				isAuthenticated: true,
@@ -37,6 +37,8 @@ const reducer = (state = initialState, action) => {
 				userPhoto: action.payload?.photoURL,
 			
 			};
+	
+				
 		default:
 			return state;
 	}

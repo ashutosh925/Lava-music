@@ -22,12 +22,11 @@ const VimeoVideos = (props) => {
 		var sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
 		return hDisplay + mDisplay + sDisplay;
 	}
-	console.log('2010-02-26T21:16:46+00:00');
 
 	return (
 		<div className={classes.vimeoRoot}>
-			<Grid container spacing={1}>
-				<Grid item lg={1}>
+			<Grid container spacing={1} justifyContent="center">
+				<Grid item xs={1} sm={1} md={1} lg={1}>
 					<div className="d-flex flex-column justify-content-evenly w-100 h-100">
 						<Tooltip title="PLAY" placement="top" className={classes.singleVideoIcons}>
 							{props.icon1}
@@ -37,12 +36,12 @@ const VimeoVideos = (props) => {
 						</Tooltip>
 					</div>
 				</Grid>
-				<Grid item lg={5}>
+				<Grid item xs={5} sm={5} md={4} lg={5}>
 					<div className="border">
 						<img src={props.img} alt="igpic " style={{ width: '100%' }} />
 					</div>
 				</Grid>
-				<Grid item lg={6}>
+				<Grid item xs={12} sm={6} md={6} lg={6}>
 					<div className={classes.singleViTitles}>
 						<h5>Title: {props.title}</h5>
 						<h5>{props.subtitle}</h5>

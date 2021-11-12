@@ -3,10 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles((theme, props) => ({
 	root: {
 		width: '100%',
+		padding: '20px 0px 20px 0px',
 		'& h5': {
 			textAlign: 'center'
 		},
-		height: '100vh'
+		height: '100%'
 	},
 	formParent: {
 		padding: '10px 0px',

@@ -12,25 +12,25 @@ import { useSelector, useDispatch } from 'react-redux';
 //files import
 import vimeo from '../../redux/actions/VimeoAction';
 import VimeoVideos from '../../components/VimeoVideos';
-import SingleVideoObject from '../../components/SingleVideo';
 
 import { useStyles } from './Styles';
 const YoutubeSearch = () => {
 	const classes = useStyles();
 	const [ searchBar, setSearchBar ] = useState({ query: '' });
 	const dispatch = useDispatch();
-	const vimeoData = useSelector((state) => state.vimeo.respononseResults.data);
+	const vimeoData = useSelector((state) => state.vimeo.respononseResults);
 	const handleChange = (event) => {
 		setSearchBar({ query: event.target.value });
 	};
 	const handlekeyDown = async (key) => {
 		if (key.keyCode === 13) {
 			if (searchBar.query !== '') {
+			const res = await dispatch(vimeo(searchBar));
+
 				setSearchBar({ query: '' });
 			}
 		}
 	};
-
 	const searchQuery = async (evnt) => {
 		if (searchBar.query !== '') {
 			const res = await dispatch(vimeo(searchBar));
@@ -39,8 +39,11 @@ const YoutubeSearch = () => {
 	};
 	const getVideo = (video) => {
 		console.log(video);
+		// const videoUrl = `https://vimeo.com${video}`;
+		dispatch({ type: 'PLAY_THIS_SONG', payload: video });
 	};
-	console.log(vimeoData);
+
+
 	// console.log(state[0].pictures.sizes[4].link);
 	// console.log(state[0].uri);
 	// console.log(state[0].name);
@@ -73,22 +76,27 @@ const YoutubeSearch = () => {
 			</div>
 
 			<div className={classes.vimeoVideosShow}>
-				{vimeoData &&
-					vimeoData.map((items, index) => {
+			{vimeoData.data.length === 0 ? <h5 className="text-center">No Videos Found</h5> :null }
+
+				{vimeoData?.length === 0 ? (
+					<h5 className="text-center">No Videos Found</h5>
+				) : (
+					vimeoData.data &&
+					vimeoData.data.map((items, index) => {
 						return (
-							<div>
+							<div key={index}>
 								<VimeoVideos
-									img={items.pictures.sizes[4].link}
-									title={items.name}
-									duration={items.duration}
-									subtitle2={items.created_time}
-									onClick={() => getVideo(items.uri)}
-									icon1={<PlayCircleOutlineIcon />}
+									img={items?.pictures?.sizes[4].link}
+									title={items?.name}
+									duration={items?.duration}
+									subtitle2={items?.created_time}
+									icon1={<PlayCircleOutlineIcon onClick={() => getVideo(items.link)} />}
 									icon2={<AddIcon />}
 								/>
 							</div>
 						);
-					})}
+					})
+				)}
 			</div>
 		</div>
 	);

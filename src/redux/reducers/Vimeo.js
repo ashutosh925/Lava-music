@@ -1,4 +1,11 @@
-import { GET_RESULT, PLAY_THIS_SONG, ADD_TO_PLAYPLIST, DELETE_THIS_SONG, VIMEO_GET_RESULT } from '../../utitils/Types';
+import {
+	GET_RESULT,
+	PLAY_THIS_SONG,
+	ADD_TO_PLAYPLIST,
+	DELETE_THIS_SONG,
+	VIMEO_GET_RESULT,
+	LOG_OUT
+} from '../../utitils/Types';
 const initialState = {
 	respononseResults: '',
 	utubeVideoPlay: '',
@@ -27,6 +34,11 @@ const videmoReducer = (state = initialState, action) => {
 		case DELETE_THIS_SONG:
 			return {
 				...state
+			};
+		case LOG_OUT:
+			return {
+				...state,
+				utubeVideoPlay: ''
 			};
 		default:
 			return state;

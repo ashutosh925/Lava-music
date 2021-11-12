@@ -1,4 +1,4 @@
-import { GET_RESULT, PLAY_THIS_SONG, ADD_TO_PLAYPLIST, DELETE_THIS_SONG } from '../../utitils/Types';
+import { GET_RESULT, PLAY_THIS_SONG, ADD_TO_PLAYPLIST, DELETE_THIS_SONG, LOG_OUT } from '../../utitils/Types';
 const initialState = {
 	respononseResults: '',
 	utubeVideoPlay: '',
@@ -15,7 +15,7 @@ const utubereducer = (state = initialState, action) => {
 		case PLAY_THIS_SONG:
 			return {
 				...state,
-				utubeVideoPlay: ` http://www.youtube.com/embed/${action.payload}`
+				utubeVideoPlay: action.payload
 			};
 		case ADD_TO_PLAYPLIST:
 			console.log('action.payload', action.payload);
@@ -27,6 +27,13 @@ const utubereducer = (state = initialState, action) => {
 		case DELETE_THIS_SONG:
 			return {
 				...state
+			};
+		case LOG_OUT:
+			console.log('action.payloadutubee');
+			return {
+				...state,
+				respononseResults: '',
+				utubeVideoPlay: ''
 			};
 		default:
 			return state;

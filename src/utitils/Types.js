@@ -1,7 +1,7 @@
 // AUTHENTICATION
 export const LOG_IN = 'LOGIN';
 export const LOG_OUT = 'LOG OUT';
-
+export const DEFAULT_PHOTO = 'DEFAULT_PHOTO';
 //PLAYLIST TYPES
 //youtube
 export const YOUTUBE_PLAYLIST = 'YOUTUBE_PLAYLIST';

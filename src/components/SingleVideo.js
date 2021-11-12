@@ -22,7 +22,7 @@ const SingleVideo = (props) => {
 			<div className={classes.singleVidContainer}>
 				<Grid container justifyContent="center" style={{ height: '120px' }}>
 					<Grid item xs={1} sm={1} md={1} lg={1}>
-						<div className="d-flex  h-100 me-2 flex-column justify-content-evenly ">
+						<div className="d-flex h-100 me-2 flex-column justify-content-evenly ">
 							<div className={classes.singleVideoIcons}>
 								<Tooltip title="PLAY" placement="top">
 									{props?.icon1}
@@ -36,7 +36,7 @@ const SingleVideo = (props) => {
 							</div>
 						</div>
 					</Grid>
-					<Grid item xs={10} sm={5} md={4} lg={5}>
+					<Grid item xs={5} sm={5} md={4} lg={5}>
 						<div style={{ width: '100%', height: '100%' }}>
 							<img src={props?.img} alt="videoimage" className={classes.singleVidImg} />
 						</div>

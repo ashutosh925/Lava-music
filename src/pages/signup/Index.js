@@ -35,13 +35,13 @@ const Signup = () => {
 		preview: false
 	});
 	const onSubmit = async (data) => {
-		console.log(data?.picture[0])
+		console.log(data?.picture);
 		setButtonState(true);
 		setErrorMessage(false);
 		const response = await dispatch(
 			signup({ email: data.Email, password: data.password, displayName: data.username, imgsend:data?.picture[0]})
 		);
-
+			dispatch({type:"DEFAULT_PHOTO",payload:data?.picture[0]})
 		switch (response) {
 			case 'auth/email-already-in-use':
 				console.log('error tried');
@@ -73,18 +73,19 @@ const Signup = () => {
 	};
 
 	const imgUpload = (evt) => {
-		console.log(evt?.target?.files[0].type);
-		if (evt?.target?.files[0].type.includes('video')) {
+		if (evt?.target?.files[0].type?.includes('video')) {
 			console.log('yes it incules');
 			setImgUploadError(true)
 		} 
-		console.log(evt?.target?.files[0])
 			if (evt?.target?.files?.length !== 0) {
 				setPreviewImg({ ...previewImg, img: URL.createObjectURL(evt?.target?.files[0]), preview: true });
 			}
 		
 	};
-	
+	const removeSelectedImg=()=>{
+		reset({picture:undefined})
+		setPreviewImg({ ...previewImg, img: null, preview: false })
+	}
 	return (
 		<div className={classes.root}>
 			<br />
@@ -103,8 +104,8 @@ const Signup = () => {
 							{...register('username', {
 								required: 'Enter username',
 								minLength: {
-									value: 5,
-									message: 'Length must be greater than 5'
+									value: 3,
+									message: 'Length must be greater than 3'
 								}
 							})}
 						/>
@@ -139,7 +140,7 @@ const Signup = () => {
 								minLength: { value: 5, message: 'Password must be greater than 5' },
 								maxLength: { value: 15, message: 'Password must be less than 15' }
 							})}
-							value={123456}
+							
 						/>
 						<br />
 						{errors.password && <span className={classes.errorMsg}>{errors.password.message}</span>}
@@ -163,7 +164,7 @@ const Signup = () => {
 								<div>
 									<img src={previewImg.img} alt="preview" className={classes.imgPreview} />
 									<CancelIcon
-										onClick={() => setPreviewImg({ ...previewImg, img: null, preview: false })}
+										onClick={removeSelectedImg}
 									/>
 								</div>
 							) : null}

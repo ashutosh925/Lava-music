@@ -8,6 +8,8 @@ import { useHistory, Link } from 'react-router-dom';
 import { useStyles } from './Styles';
 import { signin } from '../../redux/actions/Authentication';
 import AlertMsg from '../../components/Alertmsg';
+import {app} from "../../redux/actions/Authentication"
+
 const Login = () => {
 	let history = useHistory();
 	const classes = useStyles();
@@ -60,9 +62,9 @@ const Login = () => {
 			setButtonState(false);
 			setIncrecredentails(true);
 		}
-		if (response.includes('auth/network-request-failed')) alert('check your internet connection');
+		if (response.includes('auth/network-request-failed')) {alert('check your internet connection'); setButtonState(false);}
 	};
-	console.log(buttonState);
+	console.log(app.database)
 	return (
 		<div className={classes.root}>
 			<div className={classes.inputParentDiv}>
@@ -110,7 +112,7 @@ const Login = () => {
 					<h5>OR</h5>
 				</div>
 				<div className="d-flex justify-content-center">
-					<button onClick={() => history.push('/signup')}>Sign Up</button>
+					<button onClick={() => history.push('/signup') } style={{ background: buttonState ? 'grey' : '#5a585899' }} disabled={buttonState}>Sign Up</button>
 				</div>
 			</div>
 		</div>
