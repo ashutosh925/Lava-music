@@ -27,7 +27,7 @@ const youtube = (termFromSearchBar) => async (dispatch, getState) => {
 					const response2 = await API.get(item);
 					respn.push(response2?.data?.items[0].statistics?.viewCount);
 					dispatch({type:'GET_VIEWS',payload:respn});
-					console.log(respn)
+					
 				}catch(error){
 					console.log(error);
 				}

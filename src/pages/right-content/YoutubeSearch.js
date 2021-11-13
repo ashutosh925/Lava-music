@@ -13,19 +13,19 @@ import SingleVideoObject from '../../components/SingleVideo';
 
 
 const YoutubeSearch = () => {
-	const [ searchBar, setSearchBar ] = useState({ query: '' });
+	const [ searchBar, setSearchBar ] = useState();
 	const dispatch = useDispatch();
 	const classes = useStyles();
 	const {respononseResults,playlist,views} = useSelector((state) => state.utube);
 
 	const handleChange = (event) => {
-		setSearchBar({ query: event.target.value });
+		setSearchBar( event.target.value);
 	};
 	const handlekeyDown = async (key) => {
 		if (key.keyCode === 13) {
 			if (searchBar.query !== '') {
 				const res = await dispatch(youtube(searchBar));
-				setSearchBar({ query: '' });
+				setSearchBar('');
 			}
 		}
 	};
@@ -60,7 +60,7 @@ const YoutubeSearch = () => {
 		console.log(songCheck)
 
 	}
-console.log(views)
+
 	return (
 		<>
 			<h5 className="text-center">Youtube Search</h5>

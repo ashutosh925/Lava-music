@@ -16,8 +16,6 @@ const SingleVideo = (props) => {
 		if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + 'B';
 		if (n >= 1e12) return +(n / 1e12).toFixed(1) + 'T';
 	};
-
-console.log(props.views)
 	return (
 		<div className={classes.SingleVideoParnt}>
 			<div className={classes.singleVidContainer}>
@@ -55,4 +53,4 @@ console.log(props.views)
 		</div>
 	);
 };
-export default SingleVideo;
+export default React.memo(SingleVideo);
