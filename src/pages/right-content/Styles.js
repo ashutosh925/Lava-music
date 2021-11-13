@@ -47,7 +47,7 @@ export const useStyles = makeStyles((theme, props) => ({
 		margin: '10px 0px'
 	},
 	vimeoVideosShow: {
-		height: '320px',
+		height: '350px',
 		display: 'flex',
 		flexDirection: 'column',
 		width: '100%',

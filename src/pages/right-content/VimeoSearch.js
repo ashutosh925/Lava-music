@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Moment from 'react-moment';
+import moment from 'react-moment';
 //material ui import
 import SearchIcon from '@material-ui/icons/Search';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
@@ -42,18 +42,10 @@ const YoutubeSearch = () => {
 		// const videoUrl = `https://vimeo.com${video}`;
 		dispatch({ type: 'PLAY_THIS_SONG', payload: video });
 	};
+	///
 
-
-	// console.log(state[0].pictures.sizes[4].link);
-	// console.log(state[0].uri);
-	// console.log(state[0].name);
-	// console.log(vimeoData[0].tags[0].name);
-	// console.log(vimeoData[0].tags[2].name);
-
-	// console.log(maps);
-	// items.pictures.sizes[6].link
-	// items.uri
-	// items?.name
+	const time=vimeoData.data[0].release_time
+	
 	return (
 		<div className={classes.vimeoRoot}>
 			<h5 className="text-center">Vimeo Search</h5>
@@ -90,6 +82,7 @@ const YoutubeSearch = () => {
 									title={items?.name}
 									duration={items?.duration}
 									subtitle2={items?.created_time}
+
 									icon1={<PlayCircleOutlineIcon onClick={() => getVideo(items?.link)} />}
 									icon2={<AddIcon />}
 								/>

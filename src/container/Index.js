@@ -37,14 +37,14 @@ const Container = () => {
 			<Hidden only={[ 'lg', 'xl' ]}>
 				<div className={classes.root2}>
 					<Grid container justifyContent="center">
-						<Grid item sm={12} md={7}>
+						<Grid item sm={6} md={7}>
 							<MidContent />
 						</Grid>
-						<Grid item sm={8} md={5}>
+						<Grid item sm={5} md={5}>
 							<RightSideParent />
 						</Grid>
 
-						<Grid item sm={12} md={6}>
+						<Grid item sm={8} md={6}>
 							<LeftSide />
 						</Grid>
 					</Grid>

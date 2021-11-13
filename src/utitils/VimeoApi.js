@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-	baseURL: 'https://v1.nocodeapi.com/alavamusic/vimeo/dMyhCOQASiYnxkYH'
+	baseURL: 'https://v1.nocodeapi.com/alavamusic/vimeo/EdXjGilAMnYdmwti/'
 });

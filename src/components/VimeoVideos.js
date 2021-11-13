@@ -1,5 +1,5 @@
 import React from 'react';
-import Moment from 'react-moment';
+import moment from 'react-moment';
 
 //mateterial ui
 import Grid from '@material-ui/core/Grid';
@@ -17,12 +17,18 @@ const VimeoVideos = (props) => {
 		var m = Math.floor((d % 3600) / 60);
 		var s = Math.floor((d % 3600) % 60);
 
-		var hDisplay = h > 0 ? h + (h == 1 ? ' hour, ' : ' hours, ') : '';
-		var mDisplay = m > 0 ? m + (m == 1 ? ' minute, ' : ' minutes, ') : '';
-		var sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
+		var hDisplay = h > 0 ? h + (h === 1 ? ' hour, ' : ' hours, ') : '';
+		var mDisplay = m > 0 ? m + (m === 1 ? ' minute, ' : ' minutes, ') : '';
+		var sDisplay = s > 0 ? s + (s === 1 ? ' second' : ' seconds') : '';
 		return hDisplay + mDisplay + sDisplay;
 	}
 
+	var date = new Date(props.subtitle2);
+	date.toISOString().substring(0, 10);
+	var dateString = date;
+	dateString = new Date(dateString).toUTCString();
+	dateString = dateString.split(' ').slice(0, 4).join(' ');
+	console.log(dateString);
 	return (
 		<div className={classes.vimeoRoot}>
 			<Grid container spacing={1} justifyContent="center">
@@ -45,6 +51,7 @@ const VimeoVideos = (props) => {
 					<div className={classes.singleViTitles}>
 						<h5>Title: {props.title}</h5>
 						<h5>{props.subtitle}</h5>
+						<h5>Published At : {dateString}</h5>
 						<h5>Duration: {secondsToHms(props.duration)}</h5>
 					</div>
 				</Grid>

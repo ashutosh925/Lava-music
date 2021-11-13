@@ -19,7 +19,6 @@ const utubereducer = (state = initialState, action) => {
 				utubeVideoPlay: action.payload
 			};
 		case ADD_TO_PLAYPLIST:
-			console.log('action.payload', action.payload);
 			const newPlaylist = [ ...state.playlist, action.payload ];
 			return {
 				...state,
@@ -31,7 +30,6 @@ const utubereducer = (state = initialState, action) => {
 				views: action.payload
 			};
 		case LOG_OUT:
-			console.log('action.payloadutubee');
 			return {
 				...state,
 				respononseResults: '',

@@ -1,6 +1,6 @@
 import API from '../../utitils/VimeoApi';
 
-const vimeo = (termFromSearchBar) => async (dispatch, getState) => {
+const vimeo = (termFromSearchBar) => async (dispatch) => {
 	console.log('from dispatch', termFromSearchBar);
 	try {
 		const response = await API.get('/search?', {
