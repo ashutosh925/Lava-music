@@ -28,7 +28,7 @@ const VimeoVideos = (props) => {
 	var dateString = date;
 	dateString = new Date(dateString).toUTCString();
 	dateString = dateString.split(' ').slice(0, 4).join(' ');
-	console.log(dateString);
+
 	return (
 		<div className={classes.vimeoRoot}>
 			<Grid container spacing={1} justifyContent="center">
