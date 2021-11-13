@@ -2,6 +2,7 @@ import { GET_RESULT, PLAY_THIS_SONG, ADD_TO_PLAYPLIST, DELETE_THIS_SONG, LOG_OUT
 const initialState = {
 	respononseResults: '',
 	utubeVideoPlay: '',
+	views: [],
 	playlist: []
 };
 
@@ -24,9 +25,10 @@ const utubereducer = (state = initialState, action) => {
 				...state,
 				playlist: newPlaylist
 			};
-		case DELETE_THIS_SONG:
+		case 'GET_VIEWS':
 			return {
-				...state
+				...state,
+				views: action.payload
 			};
 		case LOG_OUT:
 			console.log('action.payloadutubee');

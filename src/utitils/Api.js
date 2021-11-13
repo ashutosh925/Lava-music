@@ -1,5 +1,5 @@
 import axios from 'axios';
-const token = 'AIzaSyDyVPT8VbPK6aoc398ZZMXVEpOHth5d88s';
+const token = 'AIzaSyAD-SuaapjRs-ri8ibgTUaHh34zSGVmplo';
 
 export default axios.create({
 	baseURL: 'https://www.googleapis.com/youtube/v3',

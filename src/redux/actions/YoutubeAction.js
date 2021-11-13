@@ -2,8 +2,6 @@ import API from '../../utitils/Api';
 import axios from 'axios';
 
 const youtube = (termFromSearchBar) => async (dispatch, getState) => {
-	console.log('from dispatch');
-
 	try {
 		const response = await API.get('/search?', {
 			params: {
@@ -17,7 +15,26 @@ const youtube = (termFromSearchBar) => async (dispatch, getState) => {
 		const filtervideoId = response.data.items.map((item) => {
 			return item.id.videoId;
 		});
-		console.log(filtervideoId);
+
+		const mapIds = filtervideoId.map((items) => {
+			return `/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${items}`;
+		});
+		const respn = [];
+	
+		const loopids = mapIds.forEach((item) => {
+			const callids = async () => {
+				try{
+					const response2 = await API.get(item);
+					respn.push(response2?.data?.items[0].statistics?.viewCount);
+					dispatch({type:'GET_VIEWS',payload:respn});
+					console.log(respn)
+				}catch(error){
+					console.log(error);
+				}
+
+			};
+		callids()
+		});
 
 		dispatch({ type: 'GET_RESULT', payload: response.data.items });
 	} catch (e) {

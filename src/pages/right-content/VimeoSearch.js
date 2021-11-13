@@ -76,7 +76,7 @@ const YoutubeSearch = () => {
 			</div>
 
 			<div className={classes.vimeoVideosShow}>
-			{vimeoData.data.length === 0 ? <h5 className="text-center">No Videos Found</h5> :null }
+			{vimeoData?.data?.length === 0 ? <h5 className="text-center">No Videos Found</h5> :null }
 
 				{vimeoData?.length === 0 ? (
 					<h5 className="text-center">No Videos Found</h5>
@@ -90,7 +90,7 @@ const YoutubeSearch = () => {
 									title={items?.name}
 									duration={items?.duration}
 									subtitle2={items?.created_time}
-									icon1={<PlayCircleOutlineIcon onClick={() => getVideo(items.link)} />}
+									icon1={<PlayCircleOutlineIcon onClick={() => getVideo(items?.link)} />}
 									icon2={<AddIcon />}
 								/>
 							</div>

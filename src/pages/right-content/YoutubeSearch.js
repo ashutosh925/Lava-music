@@ -1,4 +1,5 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
+import Moment from 'moment';
 //material ui import
 import SearchIcon from '@material-ui/icons/Search';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
@@ -15,7 +16,7 @@ const YoutubeSearch = () => {
 	const [ searchBar, setSearchBar ] = useState({ query: '' });
 	const dispatch = useDispatch();
 	const classes = useStyles();
-	const {respononseResults,playlist} = useSelector((state) => state.utube);
+	const {respononseResults,playlist,views} = useSelector((state) => state.utube);
 
 	const handleChange = (event) => {
 		setSearchBar({ query: event.target.value });
@@ -32,10 +33,9 @@ const YoutubeSearch = () => {
 		if (searchBar.query !== '') {
 			dispatch(youtube(searchBar));
 		}
-		console.log('check');
 	};
 	const playThisVid = (vidId) => {
-		const videoUrl=`http://www.youtube.com/embed/${vidId}`
+		const videoUrl=`https://www.youtube.com/embed/${vidId}`
 		dispatch({ type: 'PLAY_THIS_SONG', payload: videoUrl });
 	};
 
@@ -60,7 +60,7 @@ const YoutubeSearch = () => {
 		console.log(songCheck)
 
 	}
-	
+console.log(views)
 	return (
 		<>
 			<h5 className="text-center">Youtube Search</h5>
@@ -85,17 +85,23 @@ const YoutubeSearch = () => {
 			{respononseResults.length ===0 ? <h5 className="text-center">No Videos Found</h5> :
 				(respononseResults &&
 					respononseResults.map((items, idx) => {
+							
 						return (
 							<div key={idx}>
+						
 								<SingleVideoObject
 									title={items?.snippet?.title}
-									img={items.snippet?.thumbnails?.high?.url}
+									img={items?.snippet?.thumbnails?.high?.url}
 									category={items?.snippet?.channelTitle}
+									publichDate={Moment(items?.snippet?.publishTime).format("MMM Do YY")}
 									icon1={<PlayCircleOutlineIcon onClick={() => playThisVid(items?.id?.videoId)} />}
 									icon2={<AddIcon onClick={()=>addToPlaylist(items?.id?.videoId)}/>}
+									idx={idx}
+								views={views[idx]}
 								/>
 							</div>
 						);
+						
 					}))
 			}
 			</div>
