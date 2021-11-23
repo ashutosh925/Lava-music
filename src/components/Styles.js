@@ -110,7 +110,7 @@ export const useStyles = makeStyles((theme, props) => ({
 	},
 	singleVidImg: {
 		width: '95%',
-		height: '100px'
+		height: '111px'
 	},
 	singleViTitles: {
 		'& h5': {

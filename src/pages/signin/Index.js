@@ -64,7 +64,6 @@ const Login = () => {
 		}
 		if (response.includes('auth/network-request-failed')) {alert('check your internet connection'); setButtonState(false);}
 	};
-	console.log(app.database)
 	return (
 		<div className={classes.root}>
 			<div className={classes.inputParentDiv}>

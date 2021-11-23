@@ -126,7 +126,7 @@ export const signin = ({ email, password }) => async (dispatch) => {
 	try {
 		const response = await signInWithEmailAndPassword(auth, email, password);
 		dispatch({ type: 'GET_USER_DATA', payload: response.user });
-		console.log(response);
+
 		return response.operationType;
 	} catch (error) {
 		console.log(error.code);

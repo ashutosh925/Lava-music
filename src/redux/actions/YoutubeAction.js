@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import API from '../../utitils/Api';
 import axios from 'axios';
 
@@ -20,20 +21,22 @@ const youtube = (termFromSearchBar) => async (dispatch, getState) => {
 			return `/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${items}`;
 		});
 		const respn = [];
-	
+		const duration=[]
 		const loopids = mapIds.forEach((item) => {
 			const callids = async () => {
 				try{
 					const response2 = await API.get(item);
 					respn.push(response2?.data?.items[0].statistics?.viewCount);
+					duration.push(response2?.data?.items[0].contentDetails?.duration);
 					dispatch({type:'GET_VIEWS',payload:respn});
+					dispatch({type:"GET_DURATION",payload:duration})
 					
 				}catch(error){
 					console.log(error);
 				}
-
+				
 			};
-		callids()
+			callids()
 		});
 
 		dispatch({ type: 'GET_RESULT', payload: response.data.items });

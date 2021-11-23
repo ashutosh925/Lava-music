@@ -5,6 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import AddIcon from '@material-ui/icons/Add';
 import Tooltip from '@material-ui/core/Tooltip';
+import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 
 //hooks
 import { useSelector, useDispatch } from 'react-redux';
@@ -37,14 +38,18 @@ const YoutubeSearch = () => {
 		}
 		console.log('check');
 	};
-	const getVideo = (video) => {
-		console.log(video);
-		// const videoUrl = `https://vimeo.com${video}`;
+	const getVideo = (video,id) => {
+	console.log(video);
 		dispatch({ type: 'PLAY_THIS_SONG', payload: video });
+		dispatch({type:'PAUSE_VIMEO_SONG',payload:id})
+
 	};
 	///
-
+	const pausePlayingVideo=()=>{
+		dispatch({type:'PAUSE_SONG'})
 	
+	}
+// console.log(vimeoData)
 	return (
 		<div className={classes.vimeoRoot}>
 			<h5 className="text-center">Vimeo Search</h5>
@@ -67,28 +72,31 @@ const YoutubeSearch = () => {
 			</div>
 
 			<div className={classes.vimeoVideosShow}>
+	
 			{vimeoData?.data?.length === 0 ? <h5 className="text-center">No Videos Found</h5> :null }
-
 				{vimeoData?.length === 0 ? (
 					<h5 className="text-center">No Videos Found</h5>
-				) : (
-					vimeoData.data &&
-					vimeoData.data.map((items, index) => {
+				) : 
+					vimeoData &&
+					vimeoData.map((items, index) => {
 						return (
 							<div key={index}>
-								<VimeoVideos
+						{items.data.map((items,idx)=>{
+							return <div key={idx}>
+							<VimeoVideos
 									img={items?.pictures?.sizes[4].link}
 									title={items?.name}
 									duration={items?.duration}
 									subtitle2={items?.created_time}
-
-									icon1={<PlayCircleOutlineIcon onClick={() => getVideo(items?.link)} />}
+									icon1={items?.pauseSong ? <PauseCircleOutlineIcon/>:<PlayCircleOutlineIcon onClick={() => getVideo(items?.link,items?.resource_key)} /> }
 									icon2={<AddIcon />}
-								/>
+								/> 
+							</div>
+						})}
 							</div>
 						);
 					})
-				)}
+				}
 			</div>
 		</div>
 	);

@@ -20,3 +20,6 @@ export const PLAY_THIS_SONG_VIMEO = 'PLAY_THIS_SONG_VIMEO';
 
 //user Auth
 export const GET_USER_DATA = 'GET_USER_DATA';
+
+//Player
+export const PAUSE_SONG = 'PAUSE_SONG';

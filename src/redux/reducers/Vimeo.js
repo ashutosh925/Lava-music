@@ -9,15 +9,20 @@ import {
 const initialState = {
 	respononseResults: '',
 	utubeVideoPlay: '',
-	playlist: []
+	playlist: [],
+	videoDuration: ''
 };
 
 const videmoReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case VIMEO_GET_RESULT:
+			const results = action.payload;
+			const setBTnState = [ results ].map((items) => {
+				return { ...items, pauseSong: false };
+			});
 			return {
 				...state,
-				respononseResults: action.payload
+				respononseResults: setBTnState
 			};
 		case PLAY_THIS_SONG:
 			return {
@@ -31,14 +36,26 @@ const videmoReducer = (state = initialState, action) => {
 				...state,
 				playlist: newPlaylist
 			};
-		case DELETE_THIS_SONG:
+		case 'PAUSE_VIMEO_SONG':
+			// const updateBtnPause = [ state.respononseResults ].map((items) => {
+			// 	return items.id.videoId === action.payload
+			// 		? { ...items, pauseSong: true }
+			// 		: { ...items, pauseSong: false };
+			// });
+			console.log(action.payload);
 			return {
 				...state
+				// respononseResults: updateBtnPause
 			};
-		case LOG_OUT:
+		case 'PLAY_VIMEO_SONG':
+			const updateBtnPlay = state.responseResults.map((items) => {
+				return items.id.videoId === action.payload
+					? { ...items, pauseSong: false }
+					: { ...items, pauseSong: false };
+			});
 			return {
 				...state,
-				utubeVideoPlay: ''
+				respononseResults: updateBtnPlay
 			};
 		default:
 			return state;

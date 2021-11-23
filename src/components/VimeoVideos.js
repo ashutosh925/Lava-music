@@ -6,22 +6,11 @@ import Grid from '@material-ui/core/Grid';
 import Tooltip from '@material-ui/core/Tooltip';
 //files import
 import img from '../assets/2.jpg';
-
+import { secondsToHms } from '../utitils/SecondsIntoTime';
 import { useStyles } from './Styles';
 const VimeoVideos = (props) => {
 	// console.log(Moment(props.subtitle2).format('dddd, MMMM Do YYYY, h:mm:ss a'));
 	const classes = useStyles();
-	function secondsToHms(d) {
-		d = Number(d);
-		var h = Math.floor(d / 3600);
-		var m = Math.floor((d % 3600) / 60);
-		var s = Math.floor((d % 3600) % 60);
-
-		var hDisplay = h > 0 ? h + (h === 1 ? ' hour, ' : ' hours, ') : '';
-		var mDisplay = m > 0 ? m + (m === 1 ? ' minute, ' : ' minutes, ') : '';
-		var sDisplay = s > 0 ? s + (s === 1 ? ' second' : ' seconds') : '';
-		return hDisplay + mDisplay + sDisplay;
-	}
 
 	var date = new Date(props.subtitle2);
 	date.toISOString().substring(0, 10);
@@ -59,4 +48,4 @@ const VimeoVideos = (props) => {
 		</div>
 	);
 };
-export default VimeoVideos;
+export default React.memo(VimeoVideos);

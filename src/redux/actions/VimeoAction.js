@@ -10,8 +10,6 @@ const vimeo = (termFromSearchBar) => async (dispatch) => {
 		});
 
 		dispatch({ type: 'VIMEO_GET_RESULT', payload: response.data });
-
-		console.log(response);
 	} catch (e) {
 		console.log('error message', e);
 	}

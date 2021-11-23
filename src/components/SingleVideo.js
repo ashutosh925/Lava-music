@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 //material ui imports
 import Grid from '@material-ui/core/Grid';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -16,14 +16,16 @@ const SingleVideo = (props) => {
 		if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + 'B';
 		if (n >= 1e12) return +(n / 1e12).toFixed(1) + 'T';
 	};
+
 	return (
 		<div className={classes.SingleVideoParnt}>
 			<div className={classes.singleVidContainer}>
+			
 				<Grid container justifyContent="center" style={{ height: '120px' }}>
 					<Grid item xs={1} sm={1} md={1} lg={1}>
 						<div className="d-flex h-100 me-2 flex-column justify-content-evenly ">
 							<div className={classes.singleVideoIcons}>
-								<Tooltip title="PLAY" placement="top">
+								<Tooltip title={props.toolTip} placement="top">
 									{props?.icon1}
 								</Tooltip>
 							</div>
@@ -37,7 +39,8 @@ const SingleVideo = (props) => {
 					</Grid>
 					<Grid item xs={5} sm={5} md={4} lg={5}>
 						<div style={{ width: '100%', height: '100%' }}>
-							<img src={props?.img} alt="videoimage" className={classes.singleVidImg} />
+						<LazyLoadImage src={props.img} className={classes.singleVidImg} effect="blur" />
+						
 						</div>
 					</Grid>
 					<Grid item xs={12} sm={6} md={6} lg={6}>

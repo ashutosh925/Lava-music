@@ -9,12 +9,13 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import ClearIcon from '@material-ui/icons/Clear';
 
 //hooks import
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 //files import
 import { useStyles } from './Styles';
 import ActionButton from '../../components/PlayerButtons';
 import UserUpload from './UserUpload';
 import InputSearch from './InputSearch';
+
 const buttonProps = {
 	icon: <ShareIcon onClick={() => console.log('share')} />,
 	fontSize: '13px',
@@ -24,16 +25,11 @@ const buttonProps = {
 };
 
 const MidContent = () => {
-	const [ inputFieldState, setinputFieldState ] = useState(false);
-	const [ nextVideo, setNextVideo ] = useState(
-		{ count: 0 },
-		{
-			videoref: ''
-		}
-	);
 	const classes = useStyles();
-	const youtubeVIdeo = useSelector((state) => state.utube?.utubeVideoPlay);
-
+	const videoToPlay = useSelector((state) => state?.utube?.utubeVideoPlay);
+	const {pauseVideo} = useSelector((state) => state.player);
+	const [ inputFieldState, setinputFieldState ] = useState(false);
+	const dispatch=useDispatch()
 	const actionBtns = [
 		{
 			text: 'Randomize Playlist',
@@ -60,16 +56,23 @@ const MidContent = () => {
 	];
 	const inputFieldToggle = () => {
 		setinputFieldState(true);
-		console.log('togling', inputFieldState);
+	};
+	const pause = () => {
+		dispatch({type:'PLAY_SONG'})
+		
 	};
 	// 578385979
-	// console.log(youtubeVIdeo[0]);
-	const utubeUrl="https://www.youtube.com/"
+
+
 	return (
 		<div className={classes.root}>
-			<div className="border m-auto "> 
-				 <ReactPlayer  url={youtubeVIdeo === '' ? utubeUrl : youtubeVIdeo } width="100%" controls /> 
-				 {/* <ReactPlayer  url={"https://vimeo.com/514599809"} width="100%" controls /> */}
+			<div className="border m-auto ">
+				 <ReactPlayer
+					url={videoToPlay === '' ? "www.plasd.com" : videoToPlay}
+					width="100%"
+					controls={true}
+					playing={pauseVideo}
+				/> 
 				
 			</div>
 			<div className=" d-flex flex-wrap justify-content-evenly mt-2 p-2">
